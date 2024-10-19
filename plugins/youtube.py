@@ -33,6 +33,7 @@ async def download_from_youtube_(event):
         "addmetadata": True,
         "geo-bypass": True,
         "nocheckcertificate": True,
+        "cookiefile": "cookies.txt",
     }
     opt = event.pattern_match.group(1).strip()
     xx = await event.eor(get_string("com_1"))
@@ -83,3 +84,4 @@ async def download_from_youtube_(event):
     else:
         return
     await download_yt(xx, url, ytd)
+   

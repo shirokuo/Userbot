@@ -7,16 +7,10 @@
 """
 ✘ Commands Available -
 
-• `{i}yta <(youtube/any) link>`
-   Download audio from the link.
-
-• `{i}ytv <(youtube/any) link>`
-   Download video  from the link.
-
-• `{i}ytsa <(youtube) search query>`
+• `{i}songs <(youtube) search query>`
    Search and download audio from youtube.
 
-• `{i}ytsv <(youtube) search query>`
+• `{i}songv <(youtube) search query>`
    Search and download video from youtube.
 """
 from pyUltroid.fns.ytdl import download_yt, get_yt_link
@@ -25,7 +19,7 @@ from . import get_string, requests, ultroid_cmd
 
 
 @ultroid_cmd(
-    pattern="yt(a|v|sa|sv) ?(.*)",
+    pattern="song(s|v) ?(.*)",
 )
 async def download_from_youtube_(event):
     ytd = {
@@ -58,7 +52,7 @@ async def download_from_youtube_(event):
             requests.get(url)
         except BaseException:
             return await xx.eor(get_string("youtube_4"))
-    elif opt == "sa":
+    elif opt == "s":
         ytd["format"] = "bestaudio"
         ytd["outtmpl"] = "%(id)s.m4a"
         try:
@@ -69,7 +63,7 @@ async def download_from_youtube_(event):
         if not url:
             return await xx.edit(get_string("unspl_1"))
         await xx.eor(get_string("youtube_6"))
-    elif opt == "sv":
+    elif opt == "v":
         ytd["format"] = "best"
         ytd["outtmpl"] = "%(id)s.mp4"
         ytd["postprocessors"] = [{"key": "FFmpegMetadata"}]

@@ -48,6 +48,13 @@ def inline_pic():
         INLINE_PIC = None
     return INLINE_PIC
 
+def ping_pic():
+    PING_PIC = udB.get_key("PING_PIC")
+    if PING_PIC is None:
+        PING_PIC = choice(ULTROID_IMAGES)
+    elif PING_PIC == False:
+        PING_PIC = None
+    return PING_PIC
 
 Telegraph = telegraph_client()
 

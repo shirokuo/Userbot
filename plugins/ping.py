@@ -39,8 +39,9 @@ from . import (
 async def _(event):
     start = time.time()
     x = await event.eor("🦋")
-    x = await event.eor("🦋")
     end = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
+    await asyncio.sleep(1)
+    x = await event.eor("🦋")
     await asyncio.sleep(1)
     await x.edit(get_string("kping").format(end, uptime))

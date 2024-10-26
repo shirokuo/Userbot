@@ -42,4 +42,5 @@ async def _(event):
     x = await event.eor("🦋")
     end = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
+    await asyncio.sleep(1)
     await x.edit(get_string("kping").format(end, uptime))

@@ -222,7 +222,7 @@ async def _(event):
     ment = await mention_user(user_id)
     prem = event.pattern_match.group(1)
     start = time.time()
-    x = await event.eor("ping")
+    x = await event.eor("🦋")
     end = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
     if prem == "x":
@@ -231,7 +231,7 @@ async def _(event):
         await x.reply(get_string("iping").format(end))
     else:
         pic = udB.get_key("PING_PIC")
-        await asyncio.sleep(1)
+        await asyncio.sleep(5)
         await x.delete()
         await event.respond(get_string("ping").format(end, uptime, f"{ment}"), file=pic)
       

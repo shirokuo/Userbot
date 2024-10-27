@@ -16,45 +16,6 @@ from pyrogram.types import Message
 from RyuzakiLib import FaceAI, FullStackDev, GeminiLatest, RendyDevChat
 
 
-
-@ultroid_cmd(pattern="askold")
-async def chatgpt_old(e):
-    reply = await e.get_reply_message()
-    if not query:
-        if reply and reply.text:
-            query = reply.message
-    if not query:
-        return await e.eor("Give a Question to ask from ChatGPT")
-    not_pro = await e.eor("Generating answer...")
-    payloads = {"query": query}
-    try:
-        response = await async_search(
-            "",
-            post=True,
-            json=payloads,
-            re_json=True,
-            headers = {"Content-Type": "application/json"},
-        )
-        response = response["randydev"].get("message")
-        if len(response + query) < 4080:
-            to_edit = (
-                f"Query:\n~ {query}\n\nChatGPT:\n~ {response}"
-            )
-            return await not_pro.edit(to_edit, parse_mode="html")
-        with BytesIO(response.encode()) as file:
-            file.name = "gpt_response.txt"
-            await e.client.send_file(
-                e.chat_id,
-                file,
-                caption=f"{query[:1020]}",
-                reply_to=e.reply_to_msg_id
-            )
-        await not_pro.try_delete()
-    except Exception as exc:
-        LOGS.exception(exc)
-        await not_pro.edit(f"Ran into an Error: \n{exc}" )
-        
-        
 @ultroid_cmd(pattern="asko")        
 async def chatgpt(client: Client, message: Message):
     if len(message.command) > 1:

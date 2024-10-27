@@ -17,7 +17,7 @@ from RyuzakiLib import FaceAI, FullStackDev, GeminiLatest, RendyDevChat
 
 
 
-@ultroid_cmd(pattern="askold")<
+@ultroid_cmd(pattern="askold")
 async def chatgpt_old(e):
     reply = await e.get_reply_message()
     if not query:
@@ -29,7 +29,7 @@ async def chatgpt_old(e):
     payloads = {"query": query}
     try:
         response = await async_search(
-            "https://private-akeno.randydev.my.id/ryuzaki/chatgpt-old",
+            "",
             post=True,
             json=payloads,
             re_json=True,

@@ -17,7 +17,7 @@ from RyuzakiLib import FaceAI, FullStackDev, GeminiLatest, RendyDevChat
 
 
 @ultroid_cmd(pattern="asko")        
-async def chatgpt(client: message):
+async def chatgpt(client: Message):
     if len(message.command) > 1:
         prompt = message.text.split(maxsplit=1)[1]
     elif message.reply_to_message:

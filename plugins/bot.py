@@ -58,6 +58,7 @@ from . import (
     heroku_logs,
     in_pattern,
     inline_pic,
+    ping_pic,
     restart,
     shutdown,
     start_time,

@@ -231,18 +231,12 @@ async def _(event):
         await x.reply.edited(get_string("iping").format(end))
     else:
         pic = udB.get_key("PING_PIC")
-        await asyncio.sleep(3)
+        if isinstance(pic, list):
+        pic = choice(pic)
+        await asyncio.sleep(2)
         await x.delete()
-        await event.eor(get_string("ping").format(end, uptime, f"{ment}"), file=pic)
+        await event.respond(get_string("ping").format(end, uptime, f"{ment}"), file=pic)
       
-@ultroid_cmd(pattern="kping", chats=[], type=["official", "assistant"])
-async def _(event):
-    start = datetime.now()
-    end = datetime.now()
-    ms = (end - start).microseconds
-    pin = f"🌋Pɪɴɢ = {ms} microseconds"
-    await event.answer(pin, cache_time=0, alert=True)
-
 
 @ultroid_cmd(
     pattern="cmds$",

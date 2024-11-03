@@ -232,8 +232,6 @@ async def _(event):
         await x.reply.edited(get_string("iping").format(end))
     else:
         pic = udB.get_key("PING_PIC")
-        if isinstance(pic, list):
-        pic = choice(pic)
         await asyncio.sleep(2)
         await x.delete()
         await event.respond(get_string("ping").format(end, uptime, f"{ment}"), file=pic)

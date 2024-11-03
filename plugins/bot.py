@@ -228,7 +228,7 @@ async def _(event):
     if prem == "x":
         await x.reply(get_string("pping").format(end, uptime))
     elif prem == "s":
-        await x.reply(get_string("iping").format(end))
+        await x.reply.edited(get_string("iping").format(end))
     else:
         pic = udB.get_key("PING_PIC")
         await asyncio.sleep(3)

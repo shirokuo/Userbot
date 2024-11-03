@@ -233,7 +233,7 @@ async def _(event):
         pic = udB.get_key("PING_PIC")
         await asyncio.sleep(3)
         await x.delete()
-        await x.reply.edit(get_string("ping").format(end, uptime, f"{ment}"), file=pic)
+        await event.eor(get_string("ping").format(end, uptime, f"{ment}"), file=pic)
       
 @ultroid_cmd(pattern="kping", chats=[], type=["official", "assistant"])
 async def _(event):

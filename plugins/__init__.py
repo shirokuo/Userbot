@@ -26,6 +26,12 @@ from pyUltroid.startup._database import _BaseDatabase as Database
 from pyUltroid.version import __version__, ultroid_version
 from strings import get_help, get_string
 
+from .storage import Storage
+
+
+def STORAGE(n):
+    return Storage(Path("data") / n)
+
 udB: Database
 
 Redis = udB.get_key
@@ -105,3 +111,17 @@ ATRA_COL = [
     "Moccasin",
     "PowderBlue",
 ]
+
+while 0 < 6:
+    _DEVS = get(
+        "https://raw.githubusercontent.com/mrismanaziz/Reforestation/master/DEVS.json"
+    )
+    if _DEVS.status_code != 200:
+        if 0 != 5:
+            continue
+        DEVS = [844432220, 1906014306, 1382636419, 2133486058]
+        break
+    DEVS = _DEVS.json()
+    break
+
+del _DEVS

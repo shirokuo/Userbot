@@ -17,9 +17,9 @@ from pyUltroid.fns.tools import cmd_regex_replace
 
 from . import HNDLR, LOGS, OWNER_NAME, asst, get_string, inline_pic, udB, ultroid_cmd
 
-"""_main_help_menu = [
+_main_help_menu = [
     [
-        Button.inline(get_string("help_4"), data="uh_Official_"),
+        Button.inline("Modules"), data="uh_Official_"),
         #Button.inline(get_string("help_5"), data="uh_Addons_"),
     ],
     [
@@ -32,9 +32,9 @@ from . import HNDLR, LOGS, OWNER_NAME, asst, get_string, inline_pic, udB, ultroi
             get_string("help_9"), url=f"https://t.me/{asst.me.username}?start=set"
         ),
     ],
-    [Button.inline(get_string("help_10"), data="close")],
+    [Button.inline("Close"), data="close")],
 ]
-"""
+
 
 @ultroid_cmd(pattern="help( (.*)|$)")
 async def _help(ult):
@@ -52,13 +52,13 @@ async def _help(ult):
                 output = f"**Plugin** - `{plug}`\n"
                 for i in HELP["Addons"][plug]:
                     output += i
-                output += "\n© @Error405RequestTimeOut"
+                output += "\n© @devaiu"
                 await ult.eor(output)
             elif HELP.get("VCBot") and plug in HELP["VCBot"]:
                 output = f"**Plugin** - `{plug}`\n"
                 for i in HELP["VCBot"][plug]:
                     output += i
-                output += "\n© @Error405RequestTimeOut"
+                output += "\n© @devaiu"
                 await ult.eor(output)
             else:
                 try:
@@ -66,7 +66,7 @@ async def _help(ult):
                     for d in LIST[plug]:
                         x += HNDLR + d
                         x += "\n"
-                    x += "\n© @Error405RequestTimeOut"
+                    x += "\n© @devaiu"
                     await ult.eor(x)
                 except BaseException:
                     file = None
@@ -101,7 +101,7 @@ async def _help(ult):
                     elif HELP.get("VCBot") and file in HELP["VCBot"]:
                         for i in HELP["VCBot"][file]:
                             output += i
-                    output += "\n© @Error405RequestTimeOut"
+                    output += "\n© @devaiu"
                     await ult.eor(output)
         except BaseException as er:
             LOGS.exception(er)

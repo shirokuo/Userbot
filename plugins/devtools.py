@@ -77,10 +77,10 @@ async def _(event):
     xx = await event.eor(get_string("com_1"))
     reply_to_id = event.reply_to_msg_id or event.id
     stdout, stderr = await bash(cmd, run_code=1)
-    OUT = f"**☞ BASH\n\n• COMMAND:**\n`{cmd}` \n\n"
+    OUT = f"**```☞ BASH\n\n• COMMAND:**\n`{cmd}` \n\n```"
     err, out = "", ""
     if stderr:
-        err = f"**• INPUT:** \n`{stderr}`\n\n"
+        err = f"**```• INPUT:** \n`{stderr}`\n\n```"
     if stdout:
         if (carb or udB.get_key("CARBON_ON_BASH")) and (
             event.is_private
@@ -101,7 +101,7 @@ async def _(event):
                 return
             url = f"https://graph.org{uf(li)[-1]}"
             OUT = f"[\xad]({url}){OUT}"
-            out = "**• OUTPUT:**"
+            out = "**```• OUTPUT:```**"
             remove(li)
         elif (rayso or udB.get_key("RAYSO_ON_BASH")) and (
             event.is_private
@@ -141,9 +141,9 @@ async def _(event):
                     LOGS.exception(er)
             else:
                 stdout = f"`{stdout}`"
-            out = f"**• OUTPUT:**\n{stdout}"
+            out = f"**```• OUTPUT:```**\n{stdout}"
     if not stderr and not stdout:
-        out = "**• OUTPUT:**\n`Success`"
+        out = "**```• OUTPUT:```**\n`Success`"
     OUT += err + out
     if len(OUT) > 4096:
         ultd = err + out

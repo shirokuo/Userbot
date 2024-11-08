@@ -123,7 +123,7 @@ async def _(event):
                 return
             url = f"https://graph.org{uf(li)[-1]}"
             OUT = f"[\xad]({url}){OUT}"
-            out = "**• OUTPUT:**"
+            out = "**```• OUTPUT:```**"
             remove(li)
         else:
             if "pip" in cmd and all(":" in line for line in stdout.split("\n")):
@@ -134,7 +134,7 @@ async def _(event):
                         res = load[data] or ""
                         if res and "http" not in str(res):
                             res = f"`{res}`"
-                        stdout += f"**{data}**  :  {res}\n"
+                        stdout += f"```**{data}**  :  {res}\n```"
                     yamlf = True
                 except Exception as er:
                     stdout = f"`{stdout}`"

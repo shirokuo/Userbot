@@ -5,7 +5,7 @@ from pyrogram.enums import ChatAction, ParseMode
 from pyrogram import filters, Client 
 from MukeshAPI import api
 #@Mukesh.on_message(filters.command(["chatgpt","ai","ask"],  prefixes=["+", ".", "/", "-", "?", "$","#","&"]))
-
+from . import ultroid_cmd
 @ultroid_cmd(pattern="ask")
 async def chat_gpt(client, message): 
     try:

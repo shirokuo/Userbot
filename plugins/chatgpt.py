@@ -7,8 +7,7 @@ from MukeshAPI import api
 #@Mukesh.on_message(filters.command(["chatgpt","ai","ask"],  prefixes=["+", ".", "/", "-", "?", "$","#","&"]))
 
 @ultroid_cmd(pattern="ask")
-async def chat_gpt(bot, message):
-    
+async def chat_gpt(client, message): 
     try:
         await bot.send_chat_action(message.chat.id, ChatAction.TYPING)
         if len(message.command) < 2:

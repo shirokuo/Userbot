@@ -6,3 +6,4 @@ python-dotenv
 #git+https://github.com/badmunda98/SafoneAPI
 #git+https://github.com/badmunda98/BadAPI
 pyrogram
+MukeshAPI

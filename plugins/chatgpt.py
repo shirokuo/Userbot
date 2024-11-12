@@ -10,7 +10,7 @@ from pyrogram.enums import ChatAction, ParseMode
 from pyrogram import filters
 
 
-@Client.on_message(filters.command("chatgpt"))
+@ultroid_cmd(pattern="ask( (.*)|$)")
 async def chat_gpt(client, message):
     
     try:

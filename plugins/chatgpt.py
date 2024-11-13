@@ -1,22 +1,90 @@
+import os
+from collections import deque
+from io import BytesIO
+
 import requests
-#from .. import pbot as Mukesh,BOT_NAME,BOT_USERNAME
-import time
-from pyrogram.types import Message 
-from pyrogram.enums import ChatAction, ParseMode
-from pyrogram import filters, Client 
-from MukeshAPI import api
-#@Mukesh.on_message(filters.command(["chatgpt","ai","ask"],  prefixes=["+", ".", "/", "-", "?", "$","#","&"]))
-from . import ultroid_cmd
-@ultroid_cmd(pattern="ask")
-async def chat_gpt(client, message): 
+
+from . import (
+    ultroid_cmd,
+    async_searcher,
+    check_filename,
+    udB,
+    LOGS,
+    download_file,
+    run_async,
+)
+
+
+GPT_CHAT_HISTORY = deque(maxlen=30)
+
+TELEGRAM_CHAR_LIMIT = 4096  # Telegram's message character limit
+
+@ultroid_cmd(
+    pattern=r"gpt( ([\s\S]*)|$)",
+)
+async def openai_chat_gpt(e):
+    api_key = udB.get_key("OPENAI_API")
+    if not api_key:
+        return await e.eor("`OPENAI_API` key missing..", time=10)
+
+    query = e.pattern_match.group(2)
+    if not query:
+        reply = await e.get_reply_message()
+        if reply and reply.text:
+            query = reply.message
+    if not query:
+        return await e.eor("`Gimme a Question to ask from GPT-4o..`", time=5)
+
+    if query == "-c":
+        GPT_CHAT_HISTORY.clear()
+        return await e.eor("__Cleared GPT-4o Chat History!__", time=6)
+
+    eris = await e.eor(f"__Generating answer for:__\n`{query[:128]} ...`")
+    GPT_CHAT_HISTORY.append({"role": "user", "content": query})
+
     try:
-        await bot.send_chat_action(message.chat.id, ChatAction.TYPING)
-        if len(message.command) < 2:
-            await message.reply_text(
-            "Example:**\n\n`/chatgpt Where is TajMahal?`")
-        else:
-            a = message.text.split(' ', 1)[1]
-            r=api.gemini(a)["results"]
-            await message.reply_text(f" {r} \n\n🎉ᴘᴏᴡᴇʀᴇᴅ ʙʏ @{BOT_USERNAME} ", parse_mode=ParseMode.MARKDOWN)     
-    except Exception as e:
-        await message.reply_text(f"**ᴇʀʀᴏʀ: {e} ")
+        data = {
+            "model": "gpt-4o",
+            "messages": list(GPT_CHAT_HISTORY),
+        }
+        request = await async_searcher(
+            "https://api.openai.com/v1/chat/completions",
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {api_key}",
+            },
+            json=data,
+            re_json=True,
+            post=True,
+        )
+        response = request["choices"][0]["message"]["content"]
+        GPT_CHAT_HISTORY.append({"role": "assistant", "content": response})
+    except Exception as exc:
+        LOGS.warning(exc, exc_info=True)
+        GPT_CHAT_HISTORY.pop()
+        return await eris.edit(
+            f"**Error while requesting data from OpenAI:** \n> `{exc}`"
+        )
+
+    LOGS.debug(f'Token Used on ({query}) > {request["usage"]["completion_tokens"]}')
+    
+    # Truncate query to 400 characters
+    truncated_query = query[:400]
+
+    # Prepare the full message
+    full_message = f"**Query:**\n~ __{truncated_query}__\n\n**GPT-4o:**\n~ {response}"
+    
+    if len(full_message) <= TELEGRAM_CHAR_LIMIT:
+        # If it fits within the limit, send as a message
+        return await eris.edit(full_message)
+    else:
+        # If it exceeds the limit, send as a file
+        with BytesIO(full_message.encode()) as file:
+            file.name = "gpt-4o-output.txt"
+            await eris.respond(
+                "__The query and response were too long, so they have been sent as a file.__",
+                file=file,
+                reply_to=e.reply_to_msg_id or e.id,
+            )
+        await eris.try_delete()
+        

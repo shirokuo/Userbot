@@ -44,7 +44,7 @@ async def openai_chat_gpt(e):
 
     try:
         data = {
-            "model": "gpt-4o",
+            "model": "gpt-3.5-turbo",
             "messages": list(GPT_CHAT_HISTORY),
         }
         request = await async_searcher(
@@ -57,7 +57,7 @@ async def openai_chat_gpt(e):
             re_json=True,
             post=True,
         )
-        response = request["choices"][0]["message"]["content"]
+        response = response.choices[0].message.content.strip()
         GPT_CHAT_HISTORY.append({"role": "assistant", "content": response})
     except Exception as exc:
         LOGS.warning(exc, exc_info=True)

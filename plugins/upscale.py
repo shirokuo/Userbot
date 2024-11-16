@@ -1,3 +1,8 @@
+import cv2
+import subprocess
+from tqdm import tqdm
+import sys
+import argparse
 import os
 import base64
 import requests
@@ -96,3 +101,75 @@ async def enhance_image(event):
         await msg.delete()
     else:
         await msg.edit("Failed to upscale image.")
+
+
+import cv2
+import subprocess
+from tqdm import tqdm
+import sys
+import argparse
+
+
+@ultroid_cmd(pattern="vupscale$")
+async def scale_video(sourcevideopath, upscaledvideopath, scalingresolution):
+    videosourcename = sourcevideopath
+    sourcevideo = cv2.VideoCapture(videosourcename)
+    destvideo = "Upscaled_Video.mp4"
+    sourcefps = sourcevideo.get(cv2.CAP_PROP_FPS)
+    totalframes = int(sourcevideo.get(cv2.CAP_PROP_FRAME_COUNT))
+    format = cv2.VideoWriter_fourcc(*'mp4v')
+    newresolution = scalingresolution
+    scaledvideo = cv2.VideoWriter(destvideo, format, sourcefps, newresolution)
+    print("")
+    print("Rescaling...........")
+    print("")
+    pbar = tqdm(total=totalframes)
+    while True:
+        ret, frame = sourcevideo.read()
+        if ret == True:
+            b = cv2.resize(frame,newresolution,fx=0,fy=0, interpolation = cv2.INTER_CUBIC)
+            scaledvideo.write(b)
+            pbar.update(1)
+        else:
+            pbar.close()
+            break
+    sourcevideo.release()
+    scaledvideo.release()
+    cv2.destroyAllWindows()
+    p = subprocess.Popen("ffprobe -show_streams -print_format json " + sourcevideopath, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    streams = p.communicate()[0]
+    streams = streams.decode('utf-8')
+    if 'audio' in streams.lower():
+        print("")
+        print("Extracting audio from source video.........")
+        print("")
+        subprocess.call("ffmpeg -i " + sourcevideopath + " sourceaudio.mp3", shell=True)
+        print("")
+        print("Merging source audio and upscaled video.........")
+        print("")
+        subprocess.call("ffmpeg -i " + destvideo + " -i sourceaudio.mp3 -map 0:0 -map 1:0 " + upscaledvideopath, shell=True)
+    else:
+        print("")
+        print("No audio stream found.........")
+        print("")
+
+parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
+parser.add_argument('-i', type=str,
+                    metavar='Source video path', required=True,
+                    help='Path to source file.')
+parser.add_argument('-o', type=str,
+                    metavar='Scaled video path', required=True,
+                    help='Path to scaled file.')
+parser.add_argument('-r', type=int, nargs='+',
+                    metavar='Desired video resolution', required=True,
+                    help='Desired video output resolution.')
+args = parser.parse_args()
+
+if not args.i and not i:
+    raise Exception('Missing -i Input option')
+if not args.o and not o:
+    raise Exception('Missing -o Output option')
+if not args.r and not r:
+    raise Exception('Missing -r Resolution option')
+
+scale_video(args.i, args.o, tuple(args.r))

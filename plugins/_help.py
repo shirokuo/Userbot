@@ -32,8 +32,12 @@ _main_help_menu = [
             get_string("help_9"), url=f"https://t.me/{asst.me.username}?start=set"
         ),
     ],
+    [Button.url("SOURCE"), url=f"https://github.com/JIYOXC/Userbot"
+        ),
+    ],
     [Button.inline(get_string("help_10"), data="close")],
 ]
+
 
 @ultroid_cmd(pattern="help( (.*)|$)")
 async def _help(ult):

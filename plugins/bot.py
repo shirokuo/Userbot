@@ -354,7 +354,12 @@ async def inline_alive(ult):
         )
     ]
     await ult.answer(result)
-
+[
+        Button.inline(get_string("help_8"), data="ownr"),
+        Button.url(
+            get_string("help_9"), url=f"https://t.me/{asst.me.username}?start=set"
+        ),
+    ],
 
 @ultroid_cmd(pattern="update( (.*)|$)")
 async def _(e):

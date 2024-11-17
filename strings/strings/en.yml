@@ -51,7 +51,7 @@ help_10: "★ 𝖈𝖑𝖔𝖘𝖊 ★"
 help_11: "Plugin Name-{}\n💠 Commands Available -\n\n"
 help_12: "Voice Chat Bot is not active! Use .setdb VCBOT True to enable!"
 help_13: "Do '{}setdb ADDONS True' to Load Official Addons"
-
+help_source: "SOURCE"
 # userlogs
 userlogs_1: "The Chat Id You Set In Tag Logger Is Wrong , Please Correct It"
 userlogs_2: "Add me to Your Tag Logger Chat to Log Tags"

@@ -23,7 +23,7 @@ from . import ultroid_cmd
 # Consolidated the filters into a single decorator
 
 @ultroid_cmd(pattern="ev", fullsudo=True, only_devs=True)
-async def evaluation_cmd_t(client: Client, message: Message):
+async def evaluation_cmd_t(Client,Message):
     user_id = message.from_user.id
     status_message = await message.reply("__Processing eval pyrogram...__")
     try:

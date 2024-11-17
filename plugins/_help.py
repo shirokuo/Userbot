@@ -29,13 +29,13 @@ _main_help_menu = [
     [
         #Button.inline(get_string("help_8"), data="ownr"),
         Button.url(
-            get_string("help_9"), url=f"https://t.me/{asst.me.username}?start=set"
-        ),
+            get_string("help_9"), url=f"https://t.me/{asst.me.username}?start=set"),
     ],
-    [Button.url(get_string("help_source"), url=f"https://github.com/JIYOXC/Userbot"
-        ),
+    [
+        Button.url(get_string("help_source"), url=f"https://github.com/JIYOXC/Userbot"),
     ],
-    [Button.inline(get_string("help_10"), data="close")],
+    [
+        Button.inline(get_string("help_10"), data="close")],
 ]
 
 

@@ -36,7 +36,7 @@ def where_hosted():
         return "termux"
     if os.getenv("FLY_APP_NAME"):
         return "fly.io"
-    return "local"
+    return "IN MY HEART"
 
 
 if run_as_module:

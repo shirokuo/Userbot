@@ -43,4 +43,4 @@ async def _(event):
     uptime = time_formatter((time.time() - start_time) * 1000)
     x = await event.reply("Ping")
     await asyncio.sleep(0,5)
-    await x.reply(get_string("kping").format(end, uptime))
+    await x.edit(get_string("kping").format(end, uptime))

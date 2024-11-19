@@ -223,18 +223,18 @@ async def _(event):
     ment = await mention_user(user_id)
     prem = event.pattern_match.group(1)
     start = time.time()
-    x = await event.eor("🦋")
+    x = await event.reply("Ping")
     end = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
     if prem == "x":
-        await x.reply(get_string("pping").format(end, uptime))
+        await x.edit(get_string("pping").format(end, uptime))
     elif prem == "s":
-        await x.reply(get_string("iping").format(end))
+        await x.edit(get_string("iping").format(end))
     else:
         pic = udB.get_key("PING_PIC")
         await asyncio.sleep(2)
         await x.delete()
-        await event.respond(get_string("ping").format(end, uptime, f"{OWNER_NAME}"), file=pic)
+        await event.edit(get_string("ping").format(end, uptime, f"{OWNER_NAME}"), file=pic)
       
 
 @ultroid_cmd(

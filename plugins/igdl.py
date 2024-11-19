@@ -170,3 +170,21 @@ async def instagram_ig(event):
             LOGS.error(f"Error downloading Instagram video: {e}")
             await msg.eor("Unable to download the video.", time=4)
 
+@ultroid_cmd(pattern="igdl(.*)$")
+async def demn(ult):
+    input = ult.pattern_match.group(1)
+    chat = "@igdlxsajal_bot"
+    await ult.edit("Please Wait")
+    async with ult.client.conversation(chat) as conv:
+        try:
+            response = conv.wait_event(events.NewMessage(incoming=True, from_users=5954491348))
+            await ult.client.send_message(chat, f"{input}")
+            response = await response
+        except YouBlockedUserError:
+            await ult.reply("Boss! Please Unblock @igdlxsajal_bot")    
+            return
+        x = response.text
+        z = x.split("\n")[(len(x.split("\n")))-1]
+        await ult.reply(input, file=response.media)
+
+HELP.update({f"{__name__.split('.')[1]}": f"{__doc__.format(i=HNDLR)}"})

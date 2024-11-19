@@ -35,12 +35,10 @@ from . import (
 )
 
 
-@ultroid_cmd(pattern="iping$", chats=[], type=["official", "assistant"])
+@ultroid_cmd(pattern="Ping$", chats=[], type=["official", "assistant"])
 async def _(event):
     start = time.time()
     x = await event.reply("Ping")
     end = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
-    x = await event.reply("Ping")
-    await asyncio.sleep(1,5)
     await x.edit(get_string("kping").format(end, uptime))

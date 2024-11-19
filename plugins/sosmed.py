@@ -10,7 +10,7 @@ from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.functions.messages import DeleteHistoryRequest
 
 from . import ultroid_cmd as man_cmd
-from . import edit_delete, edit_or_reply
+from . import eor, edit_or_reply
 
 
 @man_cmd(pattern="sosmed(?: |$)(.*)")
@@ -21,7 +21,7 @@ async def insta(event):
     elif event.is_reply:
         link = await event.get_reply_message()
     else:
-        return await edit_delete(
+        return await eor(
             event,
             "**Berikan Link Sosmed atau Reply Link Sosmed Untuk di Download**",
         )
@@ -57,7 +57,7 @@ async def DeezLoader(event):
         return
     dlink = event.pattern_match.group(1)
     if ".com" not in dlink:
-        await edit_delete(
+        await eor(
             event, "`Mohon Berikan Link Deezloader yang ingin di download`"
         )
     else:
@@ -93,7 +93,7 @@ async def _(event):
     elif event.is_reply:
         d_link = await event.get_reply_message()
     else:
-        return await edit_delete(
+        return await eor(
             event,
             "**Berikan Link Tiktok Pesan atau Reply Link Tiktok Untuk di Download**",
         )

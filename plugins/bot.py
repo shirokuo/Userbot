@@ -215,18 +215,25 @@ async def mention_user(user_id):
     except Exception as e:
         print(f"Failed to mention user: {e}")
 
-@ultroid_cmd(pattern="ping$", chats=[], type=["official", "assistant"])
+@ultroid_cmd(pattern="ping(|x|s)$", chats=[], type=["official", "assistant"])
 #@register(incoming=True, from_users=DEVS, pattern=r"Cping")
 async def _(event):
     ultroid_bot.parse_mode = CustomMarkdown()
     user_id = OWNER_ID
     ment = await mention_user(user_id)
+    prem = event.pattern_match.group(1)
     start = time.time()
-    x = await event.reply("Ping")
+    x = await event.eor("ping")
     end = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
+    if prem == "x":
+        await x.reply(get_string("pping").format(end, uptime))
+    elif prem == "s":
+        await x.reply(get_string("iping").format(end))
+    else:
         pic = udB.get_key("PING_PIC")
         await asyncio.sleep(1)
+        await x.delete()
         await x.edit(get_string("ping").format(end, uptime, f"{OWNER_NAME}"), file=pic)
       
 

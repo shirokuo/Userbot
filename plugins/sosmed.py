@@ -9,7 +9,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.functions.messages import DeleteHistoryRequest
 
-from . import ultroid_cdm as man_cmd
+from . import ultroid_cmd as man_cmd
 from . import edit_delete, edit_or_reply
 
 

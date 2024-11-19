@@ -38,7 +38,7 @@ from . import (
 @ultroid_cmd(pattern="iping$", chats=[], type=["official", "assistant"])
 async def _(event):
     start = time.time()
-    x = await event.replay("Ping")
+    x = await event.reply("Ping")
     end = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
     x = await event.eor("Ping")

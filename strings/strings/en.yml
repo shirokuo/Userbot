@@ -179,7 +179,7 @@ lping: "**🏓 ᴘᴏɴɢ**  `{}ms`\n**🕑 ᴜᴘᴛɪᴍᴇ**  `{}`\n**👑 �
 ping: "**```Pᴏɴɢ** : {}ms\nUᴘᴛɪᴍᴇ : {}\nOᴡɴᴇʀ : {}\n```"
 iping: "**Pong !!!\n** {}ms"
 pping: "[🥵](emoji/5373067498193166118)**Pinger !!** `{}ms`\n[🎆](emoji/5195100606250889609)**Uptɨmɛr** - `{}`"
-kping: "```Pong !!** `{}ms`\n**Uptime** - `{}`'```" 
+kping: "```Pong !! {}ms\nUptime - {}```" 
 usage: "**⚙️ Dyno Usage ⚙️**:\n\n-> **Dyno usage for** `{}`:\n  •  **{}h**  **{}m |** `[{}%]`\n-> **Dyno hours quota remaining this month**:\n  •  **{}h**  **{}m |** `[{}%]`\n\n**Total Disk Space**: `{}`\n**Used**: `{}`\n**Free**: `{}`\n\n**📊 Data Usage 📊**\n**Upload**: `{}`\n**Down**: `{}`\n\n**CPU**: `{}%`\n**RAM**: `{}%`\n**DISK**: `{}%`"
 usage_simple: "**Total Disk Space**: `{}`\n**Used**: `{}`\n**Free**: `{}`\n\n**📊 Data Usage 📊**\n**Upload**: `{}`\n**Down**: `{}`\n\n**CPU**: `{}%`\n**RAM**: `{}%`\n**DISK**: `{}%`"
 shutdown: "GoodBye {}.\n`Shutting down...`"

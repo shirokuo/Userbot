@@ -10,7 +10,7 @@ from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.functions.messages import DeleteHistoryRequest
 
 from . import ultroid_cmd as man_cmd
-from . import eor, edit_or_reply
+from . import eor
 
 
 @man_cmd(pattern="sosmed(?: |$)(.*)")
@@ -18,14 +18,12 @@ async def insta(event):
     xxnx = event.pattern_match.group(1)
     if xxnx:
         link = xxnx
-    elif event.is_reply:
+    elif event.reply:
         link = await event.get_reply_message()
     else:
-        return await eor(
-            event,
-            "**Berikan Link Sosmed atau Reply Link Sosmed Untuk di Download**",
+        return await event.reply("**Berikan Link Sosmed atau Reply Link Sosmed Untuk di Download**",
         )
-    xx = await edit_or_reply(event, "`Processing Download...`")
+    xx = await event.eor("`Processing Download...`")
     chat = "@SaveAsbot"
     async with event.client.conversation(chat) as conv:
         try:
@@ -51,53 +49,17 @@ async def insta(event):
             await xx.delete()
 
 
-@man_cmd(pattern="dez(?: |$)(.*)")
-async def DeezLoader(event):
-    if event.fwd_from:
-        return
-    dlink = event.pattern_match.group(1)
-    if ".com" not in dlink:
-        await eor(
-            event, "`Mohon Berikan Link Deezloader yang ingin di download`"
-        )
-    else:
-        await edit_or_reply(event, "`Sedang Mendownload Lagu...`")
-    chat = "@DeezLoadBot"
-    async with event.client.conversation(chat) as conv:
-        try:
-            await conv.send_message("/start")
-            await conv.get_response()
-            await conv.get_response()
-            await conv.send_message(dlink)
-            details = await conv.get_response()
-            song = await conv.get_response()
-            await event.client.send_read_acknowledge(conv.chat_id)
-        except YouBlockedUserError:
-            await event.client(UnblockRequest(chat))
-            await conv.send_message("/start")
-            await conv.get_response()
-            await conv.get_response()
-            await conv.send_message(dlink)
-            details = await conv.get_response()
-            song = await conv.get_response()
-            await event.client.send_read_acknowledge(conv.chat_id)
-        await event.client.send_file(event.chat_id, song, caption=details.text)
-        await event.delete()
-
-
 @man_cmd(pattern="tiktok(?: |$)(.*)")
 async def _(event):
     xxnx = event.pattern_match.group(1)
     if xxnx:
         d_link = xxnx
-    elif event.is_reply:
+    elif event.reply:
         d_link = await event.get_reply_message()
     else:
-        return await eor(
-            event,
-            "**Berikan Link Tiktok Pesan atau Reply Link Tiktok Untuk di Download**",
+        return await event.eor("**Berikan Link Tiktok Pesan atau Reply Link Tiktok Untuk di Download**",
         )
-    xx = await edit_or_reply(event, "`Video Sedang Diproses...`")
+    xx = await event.eor("`Video Sedang Diproses...`")
     chat = "@thisvidbot"
     async with event.client.conversation(chat) as conv:
         try:
@@ -122,4 +84,3 @@ async def _(event):
             conv.chat_id, [msg_start.id, r.id, msg.id, details.id, video.id, text.id]
         )
         await xx.delete()
-

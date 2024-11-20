@@ -29,9 +29,9 @@ if run_as_module:
     from .startup.funcs import _version_changes, autobot, enable_inline, update_envs
     from .version import ultroid_version
 
-    if not os.path.exists("./plugins"):
+    if not os.path.exists("./modules"):
         LOGS.error(
-            "'plugins' folder not found!\nMake sure that, you are on correct path."
+            "'modules' folder not found!\nMake sure that, you are on correct path."
         )
         exit()
 

@@ -230,12 +230,10 @@ async def _(event):
     elif prem == "s":
         await x.reply(get_string("iping").format(end))
     else:
-        pic = udB.get_key("ALIVE_PIC")
-    if isinstance(pic, list):
-        pic = choice(pic)
+        pic = udB.get_key("PING_PIC")
         await asyncio.sleep(1)
         await x.delete()
-        await event.respond(get_string("ping").format(end, uptime, f"{ment}"), file=pic)
+        await event.respond(get_string("ping").format(end, uptime, f"{OWNER_NAME}"), file=pic)
 
 @ultroid_cmd(
     pattern="cmds$",

@@ -16,7 +16,7 @@ from .fns.tools import get_all_files
 
 
 class Loader:
-    def __init__(self, path="plugins", key="Official", logger: Logger = LOGS):
+    def __init__(self, path="modules", key="Official", logger: Logger = LOGS):
         self.path = path
         self.key = key
         self._logger = logger
@@ -53,7 +53,7 @@ class Loader:
                             files.remove(f"{self.path}/{path}.py")
         if log and not _single:
             self._logger.info(
-                f"• Installing {self.key} Plugins || Count : {len(files)} •"
+                f"• Installing {self.key} Modules || Count : {len(files)} •"
             )
         for plugin in sorted(files):
             if func == import_module:

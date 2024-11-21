@@ -7,7 +7,7 @@
 
 from telethon import Button, custom
 
-from plugins import ATRA_COL, InlinePlugin
+from modules import ATRA_COL, InlinePlugin
 from pyUltroid import *
 from pyUltroid import _ult_cache
 from pyUltroid._misc import owner_and_sudos

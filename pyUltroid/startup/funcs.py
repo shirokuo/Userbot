@@ -164,7 +164,7 @@ async def autobot():
     if who.username:
         username = who.username + "_bot"
     else:
-        username = "ultroid_" + (str(who.id))[5:] + "_bot"
+        username = "devaiu_" + (str(who.id))[5:] + "_bot"
     bf = "@BotFather"
     await ultroid_bot(UnblockRequest(bf))
     await ultroid_bot.send_message(bf, "/cancel")
@@ -248,8 +248,8 @@ async def autopilot():
         try:
             r = await ultroid_bot(
                 CreateChannelRequest(
-                    title="My Ultroid Logs",
-                    about="My Ultroid Log Group\n\n Join @TeamUltroid",
+                    title="My Userbot Logs",
+                    about="My Userbot Log Group\n\n Join @Devikachan",
                     megagroup=True,
                 ),
             )
@@ -346,8 +346,6 @@ async def customize():
             sir = f"@{ultroid_bot.me.username}"
         file = random.choice(
             [
-                "https://graph.org/file/92cd6dbd34b0d1d73a0da.jpg",
-                "https://graph.org/file/a97973ee0425b523cdc28.jpg",
                 "resources/extras/ultroid_assistant.jpg",
             ]
         )
@@ -375,7 +373,7 @@ async def customize():
         await ultroid_bot.send_message("botfather", UL)
         await asyncio.sleep(1)
         await ultroid_bot.send_message(
-            "botfather", f"✨ Hello ✨!! I'm Assistant Bot of {sir}"
+            "botfather", f"🥀 Hello !! I'm Assistant Bot of {sir}"
         )
         await asyncio.sleep(2)
         await ultroid_bot.send_message("botfather", "/setdescription")
@@ -384,7 +382,7 @@ async def customize():
         await asyncio.sleep(1)
         await ultroid_bot.send_message(
             "botfather",
-            f"✨ Powerful Ultroid Assistant Bot ✨\n✨ Master ~ {sir} ✨\n\n✨ Powered By ~ @TeamUltroid ✨",
+            f"🥀 Powerful Userbot Assistant Bot 🥀\n🥀 Master ~ {sir} 🥀\n\n🥀 Powered By ~ @Devikachan 🥀",
         )
         await asyncio.sleep(2)
         await msg.edit("Completed **Auto Customisation** at @BotFather.")
@@ -474,13 +472,13 @@ async def ready():
     chat_id = udB.get_key("LOG_CHANNEL")
     spam_sent = None
     if not udB.get_key("INIT_DEPLOY"):  # Detailed Message at Initial Deploy
-        MSG = """🎇 **Thanks for Deploying Userbot!**
+        MSG = """ **Thanks for Deploying Userbot!**
 • Here, are the Some Basic stuff from, where you can Know, about its Usage."""
         PHOTO = "https://graph.org/file/54a917cc9dbb94733ea5f.jpg"
         BTTS = Button.inline("• Click to Start •", "initft_2")
         udB.set_key("INIT_DEPLOY", "Done")
     else:
-        MSG = f"Userbot has been deployed!\n➖➖➖➖➖➖➖➖➖➖\n🥀 Owner: {inline_mention(ultroid_bot.me)}\n🥀 Assistant: @{asst.me.username}\n🥀 Telethon: {__version__}\n🥀 Database: {UltVer}\n➖➖➖➖➖➖➖➖➖➖\n🥀 Support**: @Devikachan\n➖➖➖➖➖➖➖➖➖➖"        
+        MSG = f"Userbot has been deployed!\n➖➖➖➖➖➖➖➖➖➖\n🥀 Owner : {inline_mention(ultroid_bot.me)}\n🥀 Assistant : @{asst.me.username}\n🥀 Telethon : {__version__}\n🥀 Database : {UltVer}\n➖➖➖➖➖➖➖➖➖➖\n🥀 Support : @Devikachan\n➖➖➖➖➖➖➖➖➖➖"        
         BTTS, PHOTO = None, None
         prev_spam = udB.get_key("LAST_UPDATE_LOG_SPAM")
         if prev_spam:

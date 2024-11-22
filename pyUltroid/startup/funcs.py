@@ -346,7 +346,7 @@ async def customize():
             sir = f"@{ultroid_bot.me.username}"
         file = random.choice(
             [
-                "resources/extras/ultroid_assistant.jpg",
+                "resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg",
             ]
         )
         if not os.path.exists(file):

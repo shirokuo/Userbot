@@ -1,2 +1,2 @@
-__version__ = "1995.05.25"
-ultroid_version = "2.9"
+__version__ = "25.05.2024"
+ultroid_version = "1.0"

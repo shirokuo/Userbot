@@ -6,7 +6,7 @@
 from secrets import choice
 from telethon.tl.types import InputMessagesFilterVideo, InputMessagesFilterVoice
 from telethon.tl.types import InputMessagesFilterPhotos
-from . import eor, ultroid_cmd, get_string
+from . import eor, ultroid_cmd, get_string, OWNER_NAME
 
 
 
@@ -23,7 +23,7 @@ async def _(event):
             )
         ]
         await event.client.send_file(
-            event.chat_id, file=choice(asupannya), reply_to=event.reply_to_msg_id
+            event.chat_id, file=choice(asupannya), caption=f"Asupan By ={OWNER_NAME}", reply_to=event.reply_to_msg_id
         )
         await xx.delete()
     except Exception:

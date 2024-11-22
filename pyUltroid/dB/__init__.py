@@ -20,10 +20,11 @@ DEVLIST = [
 ]
 
 ULTROID_IMAGES = [
-    f"resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg
+    f"resources/extras/{_}.jpeg
     #https://graph.org/file/{_}.jpg"
-    #for _ in [
-     #   "ec250c66268b62ee4ade6",
+    for _ in [
+       "8189450f-de7f-4582-ba94-f8ec2d928b31"
+    #   "ec250c66268b62ee4ade6",
       #  "3c25230ae30d246194eba",
       #  "b01715a61b9e876c0d45d",
        # "4ceaf720a96a24527ecff",

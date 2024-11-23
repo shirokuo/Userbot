@@ -16,7 +16,7 @@ from telethon import __version__
 from platform import python_version
 from pyUltroid.version import __version__ as UltVer
 from ..configs import Var
-
+from . import BOT_NAME
 try:
     from pytz import timezone
 except ImportError:
@@ -201,7 +201,7 @@ async def autobot():
     await ultroid_bot.send_read_acknowledge("botfather")
     if isdone.startswith("Sorry,"):
         ran = randint(1, 100)
-        username = "ultroid_" + (str(who.id))[6:] + str(ran) + "_bot"
+        username = "devaiu_" + (str(who.id))[6:] + str(ran) + "_bot"
         await ultroid_bot.send_message(bf, username)
         await asyncio.sleep(1)
         isdone = (await ultroid_bot.get_messages(bf, limit=1))[0].text
@@ -408,7 +408,7 @@ async def plug(plugin_channels):
         os.mkdir("addons")
     if not os.path.exists("addons/__init__.py"):
         with open("addons/__init__.py", "w") as f:
-            f.write("from plugins import *\n\nbot = ultroid_bot")
+            f.write("from modules import *\n\nbot = ultroid_bot")
     LOGS.info("• Loading Plugins from Plugin Channel(s) •")
     for chat in plugin_channels:
         LOGS.info(f"{'•'*4} {chat}")
@@ -425,7 +425,7 @@ async def plug(plugin_channels):
                     try:
                         load_addons(plugin)
                     except Exception as e:
-                        LOGS.info(f"Ultroid - PLUGIN_CHANNEL - ERROR - {plugin}")
+                        LOGS.info(f"Userbot - PLUGIN_CHANNEL - ERROR - {plugin}")
                         LOGS.exception(e)
                         os.remove(plugin)
         except Exception as er:
@@ -480,7 +480,7 @@ async def ready():
         BTTS = Button.inline("• Click to Start •", "initft_2")
         udB.set_key("INIT_DEPLOY", "Done")
     else:
-        MSG = f"Userbot has been deployed!\n➖➖➖➖➖➖➖➖➖➖\n🥀 Owner : {inline_mention(ultroid_bot.me)}\n🥀 Assistant : @{asst.me.username}\n🥀 Telethon : {__version__}\n🥀 Python : {platform.python_version()}\n🥀 Database : {UltVer}\n➖➖➖➖➖➖➖➖➖➖\n🥀 Support : @Devikachan\n➖➖➖➖➖➖➖➖➖➖"        
+        MSG = f"Userbot has been deployed!\n➖➖➖➖➖➖➖➖➖➖\n🥀 Owner : {inline_mention(ultroid_bot.me)}\n🥀 Assistant : @{asst.full_name}\n🥀 Telethon : {__version__}\n🥀 Python : {platform.python_version()}\n🥀 Database : {UltVer}\n➖➖➖➖➖➖➖➖➖➖\n🥀 Support : @Devikachan\n➖➖➖➖➖➖➖➖➖➖"        
         BTTS, PHOTO = None, None
         prev_spam = udB.get_key("LAST_UPDATE_LOG_SPAM")
         if prev_spam:

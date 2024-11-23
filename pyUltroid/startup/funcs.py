@@ -10,6 +10,7 @@ import os
 import random
 import shutil
 import time
+import platform
 from random import randint
 from telethon import __version__ 
 from platform import python_version

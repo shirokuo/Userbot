@@ -34,6 +34,7 @@ con = TgConverter
 quotly = Quotly()
 OWNER_NAME = ultroid_bot.full_name
 OWNER_ID = ultroid_bot.uid
+BOT_NAME = asst.full_name
 
 ultroid_bot: UltroidClient
 asst: UltroidClient

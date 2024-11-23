@@ -16,7 +16,7 @@ from telethon import __version__
 from platform import python_version
 from pyUltroid.version import __version__ as UltVer
 from ..configs import Var
-from .. import BOT_NAME
+from modules import BOT_NAME
 try:
     from pytz import timezone
 except ImportError:

@@ -168,7 +168,7 @@ afk_5: "**Away from keyboard.**\n\n**Reason:** `{}`"
 afk_6: "**Away from keyboard.**"
 
 # bot
-bot_1: "```Sometimes heartbreak is a gift from God. It's His way of telling us that He saved us from the wrong person.```"
+bot_1: "Sometimes heartbreak is a gift from God. It's His way of telling us that He saved us from the wrong person."
 bot_2: "Stats"
 bot_3: "Repo"
 bot_4: "Support"

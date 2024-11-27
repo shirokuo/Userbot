@@ -61,7 +61,7 @@ async def generate_image(event):
             await event.client.send_file(
                 event.chat_id,
                 image_path,
-                caption=f"Generated Image\nPrompt: {args}",
+                caption=f"Prompt: {args}",
                 reply_to=event.reply_to_msg_id,
             )
         else:

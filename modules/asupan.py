@@ -2,6 +2,7 @@
 # FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
 # t.me/SharingUserbot & t.me/Lunatic0de
 # ⚠️ Do not remove credits
+#Edit @devaiu
 
 from secrets import choice
 from telethon.tl.types import InputMessagesFilterVideo, InputMessagesFilterVoice

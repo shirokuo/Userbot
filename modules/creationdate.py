@@ -84,7 +84,7 @@ async def acc_create_date(event):
 
             date = interpolation.time_format(unix_time=unix_time)
             await event.eor(
-                f"**User:** {input_str}\n**Account Creation Date**: {date[0]}\n**Age**: {date[1]}"
+                f"**Account Creation**\n**User:** {input_str}\n**Date**: {date[0]}\n**Age**: {date[1]}"
             )
         except Exception as e:
             await event.eor(f"Error: {str(e)}")

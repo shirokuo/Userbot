@@ -1,5 +1,5 @@
 from .. import run_as_module
-
+import resources
 if not run_as_module:
     from ..exceptions import RunningAsFunctionLibError
 

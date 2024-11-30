@@ -53,8 +53,8 @@ def inline_pic():
 def ping_pic():
     PING_PIC = udB.get_key("PING_PIC")
     if PING_PIC is None:
-        PING_PIC = choice(ULTROID_IMAGES)
-    elif PING_PIC == False:
+        PING_PIC = choice(PING_IMAGES)
+    elif PING_PIC == True:
         PING_PIC = None
     return PING_PIC
 

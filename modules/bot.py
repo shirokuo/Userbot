@@ -230,7 +230,7 @@ async def _(event):
     elif prem == "s":
         await x.reply(get_string("iping").format(end))
     else:
-        pic = resources/extras/ping_pic.mp4
+        pic="resources/extras/ping_pic.mp4"
         #pic = udB.get_key("PING_PIC")
         await asyncio.sleep(1)
         await x.delete()

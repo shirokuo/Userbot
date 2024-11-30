@@ -33,15 +33,15 @@
 ----
 
 💠 VPS DEPLOY 
-- Get your [Necessary Variables](https://github.com/JIYOXC/AIU-USERBOT/blob/main/.env.sample)
+- Get your [Necessary Variables](https://github.com/JIYOXC/Userbot/blob/main/.env.sample)
 
 - Clone the repository:    
 
-  • `git clone https://github.com/JIYOXC/AIU-USERBOT`
+  • `git clone https://github.com/JIYOXC/Userbot`
 
 - Go to the cloned folder:    
 
-  • `cd AIU-USERBOT`
+  • `cd Userbot`
 
 - Create a virtual env:      
 

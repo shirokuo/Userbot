@@ -31,7 +31,7 @@ ULTROID_IMAGES = [
     ]
 ]
 
-PING_IMAGES = [f"resources/extras/ping_pic.mp4]
+PING_IMAGES = [f"/resources/extras/ping_pic.mp4]
 
 stickers = [
     "CAADAQADeAIAAm_BZBQh8owdViocCAI",

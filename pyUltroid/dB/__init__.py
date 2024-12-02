@@ -98,7 +98,6 @@ stickers = [
 
 #@call_back("asupan")
 async def asupan(event):
-    xx = await event.eor(get_string("asupan_1"))
     try:
         asupannya = [
             asupan
@@ -107,7 +106,7 @@ async def asupan(event):
             )
         ]
         await event.client.send_file(
-            event.chat_id, file=choice(asupannya), caption=f"Asupan By ={OWNER_NAME}", reply_to=event.reply_to_msg_id
+            event.chat_id, file=choice(asupannya), reply_to=event.reply_to_msg_id
         )
         await xx.delete()
     except Exception:

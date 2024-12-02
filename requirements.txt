@@ -5,3 +5,6 @@ python-decouple
 python-dotenv
 MukeshAPI
 py-Ultroid
+lexica-api
+pyrofork
+pyrogram 

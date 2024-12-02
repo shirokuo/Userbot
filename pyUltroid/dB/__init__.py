@@ -96,7 +96,7 @@ stickers = [
 ]
 
 
-@callback("asupan")
+@call_back("asupan")
 async def _(event):
     xx = await event.eor(get_string("asupan_1"))
     try:

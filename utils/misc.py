@@ -15,7 +15,8 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from sys import version_info
-from .db import db
+from pyUltroid.startup import _database
+#from .db import db
 import git
 
 __all__ = [

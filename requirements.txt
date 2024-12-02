@@ -8,3 +8,4 @@ py-Ultroid
 lexica-api
 pyrofork
 pyrogram 
+environs

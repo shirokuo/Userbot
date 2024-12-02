@@ -94,3 +94,21 @@ stickers = [
     "CAADAQADpAIAAm_BZBQcC2DpZcCw1wI",
     "CAADAQADpQIAAm_BZBQKruTcEU4ntwI",
 ]
+
+
+@callback("asupan")
+async def _(event):
+    xx = await event.eor(get_string("asupan_1"))
+    try:
+        asupannya = [
+            asupan
+            async for asupan in event.client.iter_messages(
+                "@xcryasupan", filter=InputMessagesFilterVideo
+            )
+        ]
+        await event.client.send_file(
+            event.chat_id, file=choice(asupannya), caption=f"Asupan By ={OWNER_NAME}", reply_to=event.reply_to_msg_id
+        )
+        await xx.delete()
+    except Exception:
+        await xx.edit("**Tidak bisa menemukan video asupan.**")

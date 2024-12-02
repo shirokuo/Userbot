@@ -43,6 +43,7 @@ from . import (
     OWNER_NAME,
     OWNER_ID,
     ULTROID_IMAGES,
+    ALIVE_TEXT,
     Button,
     Carbon,
     Telegraph,

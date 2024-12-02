@@ -175,11 +175,11 @@ async def lol(ult):
 
         if a := udB.get_key("ALIVE_EMOJI"):
             als = als.replace("♨️", a)
-    if pic:
+    if asupan:
         try:
             await ult.reply(
                 als,
-                file=pic,
+                file=asupan,
                 link_preview=False,
                 buttons=buttons if inline else None,
             )
@@ -189,7 +189,7 @@ async def lol(ult):
         except BaseException as er:
             LOGS.exception(er)
             try:
-                await ult.reply(file=pic)
+                await ult.reply(file=asupan)
                 await ult.reply(
                     als,
                     buttons=buttons if inline else None,

@@ -117,7 +117,7 @@ conv_keys = {
 
 
 @ultroid_cmd(
-    pattern="to( (.*)|$)",
+    pattern="convert( (.*)|$)",
 )
 async def uconverter(event):
     xx = await event.eor(get_string("com_1"))

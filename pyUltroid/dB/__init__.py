@@ -96,8 +96,8 @@ stickers = [
 ]
 
 
-@call_back("asupan")
-async def _(event):
+#@call_back("asupan")
+async def asupan(event):
     xx = await event.eor(get_string("asupan_1"))
     try:
         asupannya = [

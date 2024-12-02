@@ -28,6 +28,7 @@ from telethon.tl.types import Channel, Chat, User
 from pyUltroid.version import __version__ as UltVer
 from pyUltroid.fns.custom_markdown import CustomMarkdown
 from pyUltroid.dB.__init__ import DEVLIST
+from pyUltroid.dB import asupan 
 from . import HOSTED_ON, LOGS
 
 try:
@@ -139,9 +140,7 @@ async def lol(ult):
         except BaseException as er:
             LOGS.exception(er)
         inline = True
-    pic = udB.get_key("ALIVE_PIC")
-    if isinstance(pic, list):
-        pic = choice(pic)
+        pic=choice(asupan)
     uptime = time_formatter((time.time() - start_time) * 1000)
     header=choice(ALIVE_TEXT)
     y = Repo().active_branch

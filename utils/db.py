@@ -231,7 +231,7 @@ class SqliteDatabase(Database):
         return self.get("core.chatbot", "chatai_users", default=[])
 
 
-if config.db_type in ["mongo", "mongodb"]:
-    db = MongoDatabase(config.db_url, config.db_name)
+if configs.db_type in ["mongo", "mongodb"]:
+    db = MongoDatabase(configs.db_url, configs.db_name)
 else:
-    db = SqliteDatabase(config.db_name)
+    db = SqliteDatabase(configs.db_name)

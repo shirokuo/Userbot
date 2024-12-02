@@ -37,8 +37,8 @@ from pyrogram.errors import FloodWait, MessageNotModified, UserNotParticipant
 from pyrogram.types import Message
 from pyrogram.enums import ChatMembersFilter
 
-from utils.db import db
-
+#from utils.db import db
+from pyUltroid.startup import _database
 from .misc import modules_help, prefix, requirements_list
 
 META_COMMENTS = re.compile(r"^ *# *meta +(\S+) *: *(.*?)\s*$", re.MULTILINE)

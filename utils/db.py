@@ -20,7 +20,7 @@ import threading
 import sqlite3
 from dns import resolver
 import pymongo
-from utils import config
+from pyUltroid import config
 
 resolver.default_resolver = resolver.Resolver(configure=False)
 resolver.default_resolver.nameservers = ["1.1.1.1"]

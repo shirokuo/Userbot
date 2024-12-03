@@ -23,12 +23,12 @@ import requests
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
+from utils.misc import modules_help
 from utils.scripts import format_exc, format_module_help, progress
 from utils.lexicapi import ImageGeneration, UpscaleImages, ImageModels
 
 
-@Client.on_message(filters.command("upscale", prefix) & filters.me)
+@Client.on_message(filters.command("upscale") & filters.me)
 async def upscale(client: Client, message: Message):
     """Upscale Image Using Lexica API"""
 
@@ -62,7 +62,7 @@ async def upscale(client: Client, message: Message):
         await message.edit(format_exc(e))
 
 
-@Client.on_message(filters.command("lgen", prefix) & filters.me)
+@Client.on_message(filters.command("lgen") & filters.me)
 async def lgen(client: Client, message: Message):
     try:
         await message.edit_text("<code>Processing...</code>")
@@ -114,7 +114,7 @@ async def lgen(client: Client, message: Message):
         await message.edit(format_exc(e))
 
 
-@Client.on_message(filters.command("linsta", prefix) & filters.me)
+@Client.on_message(filters.command("linsta") & filters.me)
 async def linsta(client: Client, message: Message):
     if len(message.command) < 2:
         return await message.edit_text(

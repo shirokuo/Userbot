@@ -91,5 +91,5 @@ Ultroid is licensed under [GNU Affero General Public License](https://www.gnu.or
 * [Lonami](https://github.com/LonamiWebs/) for [Telethon.](https://github.com/LonamiWebs/Telethon)
 * [MarshalX](https://github.com/MarshalX) for [PyTgCalls.](https://github.com/MarshalX/tgcalls)
 
-> Made with 💠 by [AIU-USERBOT](https://t.me/aiusupportt).    
+> Made with 💠 by [♥️](https://t.me/teamx-cloner).    
 ----

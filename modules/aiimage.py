@@ -32,14 +32,14 @@ from pyrogram.enums import ChatAction, ParseMode
 
 @ultroid_cmd(pattern="imagine")
 async def imagine_(message):
-    if message.reply_to_message:
-        text = message.reply_to_message.text
+    if message.reply_message:
+        text = message.reply_message.text
     else:
 
         text =message.text.split(None, 1)[1]
     mukesh=await message.reply_text( "`Please wait...,\n\nGenerating prompt .. ...`")
     try:
-        await b.send_chat_action(message.chat.id, ChatAction.UPLOAD_PHOTO)
+        await send_chat_action(message.chat.id, ChatAction.UPLOAD_PHOTO)
         x=api.ai_image(text)
         with open("mukesh.jpg", 'wb') as f:
             f.write(x)

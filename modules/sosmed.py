@@ -60,7 +60,7 @@ async def _(event):
         return await event.eor("**Berikan Link Tiktok Pesan atau Reply Link Tiktok Untuk di Download**",
         )
     xx = await event.eor("`Video Sedang Diproses...`")
-    chat = "@tiktokbeta_dl_bot"
+    chat = "@SaveOFFbot"
     async with event.client.conversation(chat) as conv:
         try:
             msg_start = await conv.send_message("/start")

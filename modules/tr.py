@@ -8,7 +8,7 @@ from googletrans import Translator
 from . import ultroid_cmd
 
 
-@ultroid_cmd("tr ?(.*)"))
+@ultroid_cmd("tr")
 async def _(event):
     if event.fwd_from:
         return

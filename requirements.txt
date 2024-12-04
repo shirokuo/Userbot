@@ -9,3 +9,5 @@ lexica-api
 pyrofork
 pyrogram 
 environs
+emoji
+emojis

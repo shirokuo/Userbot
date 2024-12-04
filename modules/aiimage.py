@@ -25,11 +25,12 @@ SOFTWARE."""
 from pyrogram import filters
 from pyrogram.types import  Message
 from pyrogram.types import InputMediaPhoto
-from . import ultroid_cmd as  Mukesh, BOT_USERNAME
+from . import ultroid_cmd as mukesh, BOT_USERNAME
+from . import ultroid_cmd
 from MukeshAPI import api
 from pyrogram.enums import ChatAction, ParseMode
 
-@Mukesh.on_message(filters.command("imagine"))
+@ultroid_cmd(pattern="imagine"))
 async def imagine_(b, message: Message):
     if message.reply_to_message:
         text = message.reply_to_message.text

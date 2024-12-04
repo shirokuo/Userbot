@@ -6,7 +6,7 @@ Available Commands:
 import emoji
 from googletrans import Translator
 from . import ultroid_cmd
-
+from googletrans import LANGUAGES, Translator
 
 @ultroid_cmd("tr( (.*)|$))"
 async def _(event):

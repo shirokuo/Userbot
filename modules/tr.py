@@ -15,7 +15,6 @@ async def _(event):
     if "trim" in event.raw_text:
         # https://t.me/c/1220993104/192075
         return
-    input_str = event.pattern_match.group(1)
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         text = previous_message.message

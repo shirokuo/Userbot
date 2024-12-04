@@ -11,3 +11,5 @@ pyrogram
 environs
 emoji
 emojis
+speedtest
+googletrans

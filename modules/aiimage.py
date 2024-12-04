@@ -31,7 +31,7 @@ from MukeshAPI import api
 from pyrogram.enums import ChatAction, ParseMode
 
 @ultroid_cmd(pattern="imagine")
-async def imagine_(b, message: Message):
+async def imagine_(message):
     if message.reply_to_message:
         text = message.reply_to_message.text
     else:

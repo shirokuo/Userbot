@@ -32,7 +32,7 @@ from pyrogram.enums import ChatAction, ParseMode
 
 @ultroid_cmd(pattern="imagine")
 async def imagine_(message):
-    if message.reply_message:
+    if message_reply_message:
         text = message.reply_message.text
     else:
 

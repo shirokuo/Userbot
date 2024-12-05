@@ -140,7 +140,7 @@ async def lol(ult):
         except BaseException as er:
             LOGS.exception(er)
         inline = True
-        pic=choice(asupan)
+        pic= choice(asupan)
     uptime = time_formatter((time.time() - start_time) * 1000)
     header=choice(ALIVE_TEXT)
     y = Repo().active_branch

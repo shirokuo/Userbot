@@ -251,7 +251,7 @@ async def autopilot():
             r = await ultroid_bot(
                 CreateChannelRequest(
                     title="My Userbot Logs",
-                    about="My Userbot Log Group\n\n Join @Devikachan",
+                    about="My Userbot Log Group\n\n Join @xteam_cloner",
                     megagroup=True,
                 ),
             )
@@ -480,7 +480,7 @@ async def ready():
         BTTS = Button.inline("• Click to Start •", "initft_2")
         udB.set_key("INIT_DEPLOY", "Done")
     else:
-        MSG = f"Userbot has been deployed!\n➖➖➖➖➖➖➖➖➖➖\n🥀 Owner : {inline_mention(ultroid_bot.me)}\n🥀 Assistant : @{asst.me.username}\n🥀 Telethon : {__version__}\n🥀 Python : {platform.python_version()}\n🥀 Database : {UltVer}\n➖➖➖➖➖➖➖➖➖➖\n🥀 Support : @Devikachan\n➖➖➖➖➖➖➖➖➖➖"        
+        MSG = f"🔥ᴜꜱᴇʀʙᴏᴛ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴀᴄᴛɪᴠᴀᴛᴇᴅ🔥\n➖➖➖➖➖➖➖➖➖➖\n🥀 Owner : {inline_mention(ultroid_bot.me)}\n🥀 Telethon : {__version__}\n🥀 Python : {platform.python_version()}\n🥀 Database : {UltVer}\n➖➖➖➖➖➖➖➖➖➖\n🥀 Support : @xteam_cloner\n➖➖➖➖➖➖➖➖➖➖"        
         BTTS, PHOTO = None, None
         prev_spam = udB.get_key("LAST_UPDATE_LOG_SPAM")
         if prev_spam:

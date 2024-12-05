@@ -140,7 +140,7 @@ async def lol(ult):
         except BaseException as er:
             LOGS.exception(er)
         inline = True
-        pic=choice(asupan)
+        file="https://github.com/xteam-cloner/Userbot/blob/main/resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg"
     uptime = time_formatter((time.time() - start_time) * 1000)
     header=choice(ALIVE_TEXT)
     y = Repo().active_branch
@@ -163,7 +163,7 @@ async def lol(ult):
             als = als.replace("♨️", _e)
     else:
         als = (get_string("alive_1")).format(
-            header,
+            file,
             OWNER_NAME,
             f"{ultroid_version} [{HOSTED_ON}]",
             UltVer,
@@ -175,11 +175,11 @@ async def lol(ult):
 
         if a := udB.get_key("ALIVE_EMOJI"):
             als = als.replace("♨️", a)
-    if asupan:
+    if file:
         try:
             await ult.reply(
                 als,
-                file=asupan,
+                file=file,
                 link_preview=False,
                 buttons=buttons if inline else None,
             )
@@ -277,7 +277,7 @@ async def shutdownbot(ult):
 )
 async def _(event):
     opt = event.pattern_match.group(1).strip()
-    file = f"ultroid{sys.argv[-1]}.log" if len(sys.argv) > 1 else "ultroid.log"
+    file = f"userbot{sys.argv[-1]}.log" if len(sys.argv) > 1 else "ultroid.log"
     if opt == "heroku":
         await heroku_logs(event)
     elif opt == "carbon" and Carbon:
@@ -285,16 +285,16 @@ async def _(event):
         with open(file, "r") as f:
             code = f.read()[-2500:]
         file = await Carbon(
-            file_name="ultroid-logs",
+            file_name="userbot-logs",
             code=code,
             backgroundColor=choice(ATRA_COL),
         )
         if isinstance(file, dict):
             await event.eor(f"`{file}`")
             return
-        await event.reply("**Aiu Logs.**", file=file)
+        await event.reply("**Userbot Logs.**", file=file)
     elif opt == "open":
-        with open("ultroid.log", "r") as f:
+        with open("userbot.log", "r") as f:
             file = f.read()[-4000:]
         return await event.eor(f"`{file}`")
     else:
@@ -304,9 +304,9 @@ async def _(event):
 
 @in_pattern("alive", owner=True)
 async def inline_alive(ult):
-    pic = udB.get_key("ALIVE_PIC")
+    file="https://github.com/xteam-cloner/Userbot/blob/main/resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg"
     if isinstance(pic, list):
-        pic = choice(pic)
+        file=file
     uptime = time_formatter((time.time() - start_time) * 1000)
     header = udB.get_key("ALIVE_TEXT") or get_string("bot_1")
     y = Repo().active_branch

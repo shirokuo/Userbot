@@ -76,9 +76,6 @@ from . import (
 def ULTPIC():
     return inline_pic() or choice(ULTROID_IMAGES)
 
-def file():
-    return file="/resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg"
-
 buttons = [
     [
         Button.url(get_string("bot_3"), "https://github.com/JIYOXC/AIU-USERBOT"),
@@ -142,7 +139,9 @@ async def lol(ult):
         except BaseException as er:
             LOGS.exception(er)
         inline = True
-        file="/resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg"
+            pic = udB.get_key("ALIVE_PIC")
+    if isinstance(pic, list):
+        pic = choice(pic)
     uptime = time_formatter((time.time() - start_time) * 1000)
     header=choice(ALIVE_TEXT)
     y = Repo().active_branch
@@ -165,7 +164,7 @@ async def lol(ult):
             als = als.replace("♨️", _e)
     else:
         als = (get_string("alive_1")).format(
-            file,
+            pic,
             OWNER_NAME,
             f"{ultroid_version} [{HOSTED_ON}]",
             UltVer,
@@ -177,11 +176,11 @@ async def lol(ult):
 
         if a := udB.get_key("ALIVE_EMOJI"):
             als = als.replace("♨️", a)
-    if file:
+    if pic:
         try:
             await ult.reply(
                 als,
-                file=file,
+                file=pic,
                 link_preview=False,
                 buttons=buttons if inline else None,
             )
@@ -191,7 +190,7 @@ async def lol(ult):
         except BaseException as er:
             LOGS.exception(er)
             try:
-                await ult.reply(file=asupan)
+                await ult.reply(file=pic)
                 await ult.reply(
                     als,
                     buttons=buttons if inline else None,
@@ -306,9 +305,9 @@ async def _(event):
 
 @in_pattern("alive", owner=True)
 async def inline_alive(ult):
-    file="https://github.com/xteam-cloner/Userbot/blob/main/resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg"
+        pic = udB.get_key("ALIVE_PIC")
     if isinstance(pic, list):
-        file=file
+        pic = choice(pic)
     uptime = time_formatter((time.time() - start_time) * 1000)
     header = udB.get_key("ALIVE_TEXT") or get_string("bot_1")
     y = Repo().active_branch

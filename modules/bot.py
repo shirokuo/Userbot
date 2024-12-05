@@ -105,18 +105,6 @@ alive_txt = """
 
 in_alive =  "**\n\n**{}**\n\n[💠](emoji/5971944878815317190)**ᴏᴡɴᴇʀ** - `{}`\n[💠](emoji/5971944878815317190)**ᴀɪᴜ** - `{}`\n[💠](emoji/5971944878815317190)**ᴘʏ-ᴀɪᴜ** - `{}`\n[💠](emoji/5971944878815317190)**ᴜᴘᴛɪᴍᴇ** - `{}`\n[💠](emoji/5971944878815317190)**ᴘʏᴛʜᴏɴ** - `{}`\n[💠](emoji/5971944878815317190)**ᴛᴇʟᴇᴛʜᴏɴ** - `{}`\n[💠](emoji/5971944878815317190)**ʙʀᴀɴᴄʜ - `{}`"
 
-absen = [
-    "**Hadir Sayang** 😳",
-    "**Hadir Bang Jiyo** 😁",
-    "**Maaf ka habis nemenin Bang Jiyo** 🥺",
-    "**Maaf ka habis disuruh Tuan Bang Jiyo** 🥺🙏🏻",
-    "**Hadir Jiyo Sayang** 😘",
-    "**Hadir Jiyo Akuuuuhhh** ☺️",
-    "**Hadir Jiyo brother Aku** 🥰",
-    "**Sokap bet lu**",
-    "**Apasi Bawel** 🥰",
-]
-
 
 @callback("alive")
 async def alive(event):
@@ -140,7 +128,7 @@ async def lol(ult):
         except BaseException as er:
             LOGS.exception(er)
         inline = True
-        pic= choice(asupan)
+        pic= choice(pic)
     uptime = time_formatter((time.time() - start_time) * 1000)
     header=choice(ALIVE_TEXT)
     y = Repo().active_branch
@@ -175,11 +163,11 @@ async def lol(ult):
 
         if a := udB.get_key("ALIVE_EMOJI"):
             als = als.replace("♨️", a)
-    if asupan:
+    if pic:
         try:
             await ult.reply(
                 als,
-                file=asupan,
+                file=pic,
                 link_preview=False,
                 buttons=buttons if inline else None,
             )

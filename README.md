@@ -3,12 +3,12 @@
   <img src="https://github.com/xteam-cloner/Userbot/blob/main/resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg" alt="Userbot Logo">
 </p>
 <h1 align="center">
-  <b>❤️‍🩹 ꭙ ᴜꜱᴇʀʙᴏᴛ ❤️‍🩹</b>
+  <b>❤️‍🩹 ᴜꜱᴇʀʙᴏᴛ ❤️‍🩹</b>
 </h1>
 
 <b>A stable pluggable Telegram userbot  based on Telethon.</b>
 
-[![](https://img.shields.io/badge/AIU-v1.0-crimson)](#)
+[![](https://img.shields.io/badge/Userbot-v1.0-crimson)](#)
 [![Stars](https://img.shields.io/github/stars/JIYOXC/AIU-USERBOT?style=flat-square&color=yellow)](https://github.com/JIYOXC/AIU-USERBOT/stargazers)
 [![Forks](https://img.shields.io/github/forks/JIYOXC/AIU-USERBOT?style=flat-square&color=orange)](https://github.com/JIYOXC/AIU-USERBOTd/fork)
 [![Size](https://img.shields.io/github/repo-size/JIYOXC/AIU-USERBOT?style=flat-square&color=green)](https://github.com/JIYOXC/AIU-USERBOT/)   

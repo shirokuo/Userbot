@@ -1,9 +1,9 @@
 ----
 <p align="center">
-  <img src="https://github.com/JIYOXC/AIU-USERBOT/blob/main/resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg" alt="Userbot Logo">
+  <img src="https://github.com/xteam-cloner/Userbot/blob/main/resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg" alt="Userbot Logo">
 </p>
 <h1 align="center">
-  <b>💠ᴀɪᴜ ꭙ ᴜꜱᴇʀʙᴏᴛ💠</b>
+  <b>❤️‍🩹 ꭙ ᴜꜱᴇʀʙᴏᴛ ❤️‍🩹</b>
 </h1>
 
 <b>A stable pluggable Telegram userbot  based on Telethon.</b>

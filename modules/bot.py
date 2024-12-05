@@ -76,6 +76,8 @@ from . import (
 def ULTPIC():
     return inline_pic() or choice(ULTROID_IMAGES)
 
+def file():
+    return file="/resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg"
 
 buttons = [
     [
@@ -140,7 +142,7 @@ async def lol(ult):
         except BaseException as er:
             LOGS.exception(er)
         inline = True
-        file="https://github.com/xteam-cloner/Userbot/blob/main/resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg"
+        file="/resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg"
     uptime = time_formatter((time.time() - start_time) * 1000)
     header=choice(ALIVE_TEXT)
     y = Repo().active_branch

@@ -162,11 +162,11 @@ async def autobot():
     await ultroid_bot.start()
     LOGS.info("MAKING A TELEGRAM BOT FOR YOU AT @BotFather, Kindly Wait")
     who = ultroid_bot.me
-    name = who.first_name + "'s Bot"
+    name = who.first_name + "Bot"
     if who.username:
         username = who.username + "_bot"
     else:
-        username = "devaiu_" + (str(who.id))[5:] + "_bot"
+        username = "xteam_" + (str(who.id))[5:] + "_bot"
     bf = "@BotFather"
     await ultroid_bot(UnblockRequest(bf))
     await ultroid_bot.send_message(bf, "/cancel")
@@ -201,7 +201,7 @@ async def autobot():
     await ultroid_bot.send_read_acknowledge("botfather")
     if isdone.startswith("Sorry,"):
         ran = randint(1, 100)
-        username = "devaiu_" + (str(who.id))[6:] + str(ran) + "_bot"
+        username = "xteam_" + (str(who.id))[6:] + str(ran) + "_bot"
         await ultroid_bot.send_message(bf, username)
         await asyncio.sleep(1)
         isdone = (await ultroid_bot.get_messages(bf, limit=1))[0].text

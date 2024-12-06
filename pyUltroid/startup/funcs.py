@@ -13,6 +13,7 @@ import time
 import platform
 from random import randint
 from telethon import __version__ 
+import pyrogram 
 from platform import python_version
 from pyUltroid.version import __version__ as UltVer
 from ..configs import Var
@@ -480,7 +481,7 @@ async def ready():
         BTTS = Button.inline("• Click to Start •", "initft_2")
         udB.set_key("INIT_DEPLOY", "Done")
     else:
-        MSG = f"🔥ᴜꜱᴇʀʙᴏᴛ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴀᴄᴛɪᴠᴀᴛᴇᴅ🔥\n➖➖➖➖➖➖➖➖➖➖\n🥀 Owner : {inline_mention(ultroid_bot.me)}\n🥀 Telethon : {__version__}\n🥀 Python : {platform.python_version()}\n🥀 Database : {UltVer}\n➖➖➖➖➖➖➖➖➖➖\n🥀 Support : @xteam_cloner\n➖➖➖➖➖➖➖➖➖➖"        
+        MSG = f"🔥ᴜꜱᴇʀʙᴏᴛ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴀᴄᴛɪᴠᴀᴛᴇᴅ🔥\n➖➖➖➖➖➖➖➖➖➖\n🥀 Owner : {inline_mention(ultroid_bot.me)}\n🥀 Telethon : {__version__}\n🥀 Python : {platform.python_version()}\n🥀 Pyrogram : {pyrogram.__version__}\n➖➖➖➖➖➖➖➖➖➖\n🥀 Support : @xteam_cloner\n➖➖➖➖➖➖➖➖➖➖"        
         BTTS, PHOTO = None, None
         prev_spam = udB.get_key("LAST_UPDATE_LOG_SPAM")
         if prev_spam:

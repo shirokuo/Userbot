@@ -57,11 +57,11 @@ async def generate_image(event):
     try:
         # Await the image creation
         image_path = await paal_image(args.strip())
-        if len(f"Generated Image\nPrompt: {args}") <= 1024:
+        if len(f"Prompt: {args}") <= 1024:
             await event.client.send_file(
                 event.chat_id,
                 image_path,
-                caption=f"Generated Image\nPrompt: {args}",
+                caption=f"Prompt: {args}",
                 reply_to=event.reply_to_msg_id,
             )
         else:

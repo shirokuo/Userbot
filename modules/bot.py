@@ -232,7 +232,7 @@ async def _(event):
         pic = udB.get_key("PING_PIC")
         await asyncio.sleep(1)
         await x.delete()
-        await event.respond(get_string("ping").format(end, uptime, f"{OWNER_NAME}"), file=pic, f"[{SUP_BUTTONS}]")
+        await event.respond(get_string("ping").format(end, uptime, f"{OWNER_NAME}"), file=pic)
 
 @ultroid_cmd(
     pattern="cmds$",

@@ -9,10 +9,10 @@
 <b>A stable pluggable Telegram userbot  based on Telethon.</b>
 
 [![](https://img.shields.io/badge/Userbot-v1.0-crimson)](#)
-[![Stars](https://img.shields.io/github/stars/JIYOXC/AIU-USERBOT?style=flat-square&color=yellow)](https://github.com/JIYOXC/AIU-USERBOT/stargazers)
+[![Stars](https://img.shields.io/github/stars/xteam-cloner/USERBOT?style=flat-square&color=yellow)](https://github.com/xteam-cloner/Userbot/stargazers)
 [![Forks](https://img.shields.io/github/forks/JIYOXC/AIU-USERBOT?style=flat-square&color=orange)](https://github.com/JIYOXC/AIU-USERBOTd/fork)
 [![Size](https://img.shields.io/github/repo-size/JIYOXC/AIU-USERBOT?style=flat-square&color=green)](https://github.com/JIYOXC/AIU-USERBOT/)   
-[![Python](https://img.shields.io/badge/Python-v3.10.3-blue)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-v3.12.3-blue)](https://www.python.org/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/JIYOXC/AIU-USERBOT/graphs/commit-activity)   
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/JIYOXC/AIU-USERBOT)
 [![Contributors](https://img.shields.io/github/contributors/JIYOXC/AIU-USERBOT?style=flat-square&color=green)](https://github.com/JIYOXC/AIU-USERBOT/graphs/contributors)

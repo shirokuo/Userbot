@@ -87,7 +87,6 @@ buttons = [
 SUP_BUTTONS = [
     [
         Button.url("• Repo •", url="https://github.com/JIYOXC/Userbot"),
-        Button.url("• Support •", url="t.me/lullagroup"),
     ],
 ]
 

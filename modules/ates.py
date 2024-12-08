@@ -2,7 +2,7 @@ from telethon import TelegramClient, events
 import asyncio
 from . import ultroid_bot, asst
 
-@ultroid_bot.on(events.NewMessage(pattern="hello"))
+@ultroid_bot.on(events.NewMessage(pattern="/hello"))
 async def start(event):
     await event.reply("Halo! Ketikkan @nama_botmu untuk mencari.")
 

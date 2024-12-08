@@ -9,7 +9,7 @@ import re
 import time
 from datetime import datetime
 from os import remove
-
+import resources
 from git import Repo
 from telethon import Button
 from telethon.tl.types import InputWebDocument, Message

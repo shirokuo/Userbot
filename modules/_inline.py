@@ -59,7 +59,7 @@ SUP_BUTTONS = [
 
 @in_pattern(owner=False, func=lambda x: not x.text)
 async def inline_alive(o):
-    TLINK = inline_pic() or "/resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg"
+    TLINK = inline_pic() or "https://github.com/xteam-cloner/Userbot/blob/main/resources/extras/8189450f-de7f-4582-ba94-f8ec2d928b31.jpeg"
     MSG = "**What are you looking for?**"
     WEB0 = InputWebDocument(
         "https://graph.org/file/acd4f5d61369f74c5e7a7.jpg", 0, "image/jpg", []

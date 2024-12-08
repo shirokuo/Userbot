@@ -50,8 +50,7 @@ upage = 0
 
 SUP_BUTTONS = [
     [
-        Button.url("• Repo •", url="https://github.com/JIYOXC/Userbot"),
-        Button.url("• Support •", url="t.me/lullagroup"),
+        Button.url("• Repo •", url="https://github.com/xteam-cloner/Userbot"),
     ],
 ]
 
@@ -61,14 +60,12 @@ SUP_BUTTONS = [
 @in_pattern(owner=False, func=lambda x: not x.text)
 async def inline_alive(o):
     TLINK = inline_pic() or "https://graph.org/file/74d6259983e0642923fdb.jpg"
-    MSG = "**• Userbot •**"
     WEB0 = InputWebDocument(
         "https://graph.org/file/acd4f5d61369f74c5e7a7.jpg", 0, "image/jpg", []
     )
     RES = [
         await o.builder.article(
             type="photo",
-            text=MSG,
             include_media=True,
             buttons=SUP_BUTTONS,
             title="Userbot",

@@ -37,7 +37,7 @@
 
 - Clone the repository:    
 
-  • `git clone https://github.com/JIYOXC/Userbot`
+  • `git clone https://github.com/xteam-cloner/Userbot`
 
 - Go to the cloned folder:    
 
@@ -50,9 +50,7 @@
 
 - Install the requirements:
 
-  • `pip3 install --no-cache-dir  -r requirements.txt`
-
-  • `pip3 install --no-cache-dir -r re*/st*/op*.txt`
+  • `pip3 install --no-cache-dir  -r requirements.txt && pip3 install --no-cache-dir -r re*/st*/op*.txt`
   
 
 - Fill your variables in the env by
@@ -63,7 +61,7 @@
 
 • Install screen to keep running your bot when you close the terminal by 
   
-  • `screen -S AIU-USERBOT`
+  • `screen -S Userbot`
 
 • Finally Run the bot:
   
@@ -75,7 +73,7 @@
 ---
 💠 Termux Session Gen
 
-`apt update && apt upgrade -y && apt install python wget -y && pip install Telethon && wget https://raw.githubusercontent.com/TeamUltroid/Ultroid/dev/resources/session/ssgen.py && python ssgen.py`
+`apt update && apt upgrade -y && apt install python wget -y && pip install Telethon && wget https://raw.githubusercontent.com/xteam-cloner/Userbot/dev/resources/session/ssgen.py && python ssgen.py`
 
 ---
 
@@ -87,7 +85,7 @@ Ultroid is licensed under [GNU Affero General Public License](https://www.gnu.or
 
 # Credits
 * [![TeamUltroid-Devs](https://img.shields.io/static/v1?label=Teamultroid&message=devs&color=critical)](https://t.me/@xditya)
-* [![JIYOXC-REMOD](https://img.shields.io/static/v1?label=JIYOXC&message=REMOD&color=critical)](https://t.me/@REVAIU)
+* [![XTEAM-REMOD](https://img.shields.io/static/v1?label=JIYOXC&message=REMOD&color=critical)](https://t.me/@teamx_cloner)
 * [Lonami](https://github.com/LonamiWebs/) for [Telethon.](https://github.com/LonamiWebs/Telethon)
 * [MarshalX](https://github.com/MarshalX) for [PyTgCalls.](https://github.com/MarshalX/tgcalls)
 

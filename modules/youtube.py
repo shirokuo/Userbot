@@ -19,7 +19,7 @@ from . import get_string, requests, ultroid_cmd
 
 
 @ultroid_cmd(
-    pattern="song|video ?(.*)",
+    pattern=("song(s|v) ?(.*)",
 )
 async def download_from_youtube_(event):
     ytd = {

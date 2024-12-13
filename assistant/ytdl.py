@@ -217,7 +217,7 @@ async def _(event):
     elif lets_split[0] == "video":
         opts = {
                 "format": "(bestvideo[height<=?720][width<=?1280][ext=mp4])+(bestaudio[ext=m4a])",
-                "outtmpl": "f"%(id)s.%(ext)s",
+                "outtmpl": "f"%(id)s.%(ext)",
                 "geo_bypass": True,
                 "nocheckcertificate": True,
                 "quiet": True,

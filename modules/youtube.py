@@ -31,7 +31,17 @@ async def download_from_youtube_(event):
     }
     opt = event.pattern_match.group(1).strip()
     xx = await event.eor(get_string("com_1"))
-    if opt == "song":
+    if opt == "ax":
+        ytd["format"] = "bestaudio"
+        ytd["outtmpl"] = "%(id)s.m4a"
+        url = event.pattern_match.group(2)
+        if not url:
+            return await xx.eor(get_string("youtube_1"))
+        try:
+            requests.get(url)>>
+        except BaseException:
+            return await xx.eor(get_string("youtube_2"))
+    elif opt == "s":
         ytd["format"] = "bestaudio"
         ytd["outtmpl"] = "%(id)s.m4a"
         try:
@@ -42,7 +52,7 @@ async def download_from_youtube_(event):
         if not url:
             return await xx.edit(get_string("unspl_1"))
         await xx.eor(get_string("youtube_6"))
-    elif opt == "video":
+    elif opt == "v":
         ytd["format"] = "best"
         ytd["outtmpl"] = "%(id)s.mp4"
         ytd["postprocessors"] = [{"key": "FFmpegMetadata"}]

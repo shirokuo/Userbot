@@ -36,7 +36,7 @@ def where_hosted():
         return "termux"
     if os.getenv("FLY_APP_NAME"):
         return "fly.io"
-    return "❤️"
+    return "iPhone 16 Pro Max"
 
 
 if run_as_module:
@@ -46,7 +46,7 @@ if run_as_module:
     from ..version import __version__ as __pyUltroid__
     from ..version import ultroid_version
 
-    file = f"ultroid{sys.argv[6]}.log" if len(sys.argv) > 6 else "ultroid.log"
+    file = f"Userbot{sys.argv[6]}.log" if len(sys.argv) > 6 else "ultroid.log"
 
     if os.path.exists(file):
         os.remove(file)
@@ -83,7 +83,7 @@ if run_as_module:
     LOGS.info(
         """
                     -----------------------------------
-                            Starting Deployment
+                          🥀Starting Deployment🥀
                     -----------------------------------
     """
     )

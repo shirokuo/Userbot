@@ -99,7 +99,7 @@ if run_as_module:
     DUAL_HNDLR = udB.get_key("DUAL_HNDLR") or "/"
     SUDO_HNDLR = udB.get_key("SUDO_HNDLR") or HNDLR
 else:
-    print("Userbot 2024 © Devikachan")
+    print("Userbot 2024 © XTEAM-CLONER")
 
     from logging import getLogger
 

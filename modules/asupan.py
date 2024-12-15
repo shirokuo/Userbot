@@ -16,13 +16,13 @@ from . import eor, ultroid_cmd, get_string, OWNER_NAME
 async def _(event):
     xx = await event.eor(get_string("asupan_1"))
     try:
-        #asupannya = [
+        asupannya = [
             asupan
             async for asupan in event.client.iter_messages(
                 "@xcryasupan", filter=InputMessagesFilterVideo
             )
         ]
-        await event.client.send_file(
+        await event.cliient.send_file(
             event.chat_id, file=choice(asupannya), caption=f"Asupan BY 🥀{OWNER_NAME}🥀", reply_to=event.reply_to_msg_id
         )
         await xx.delete()

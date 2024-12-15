@@ -163,6 +163,7 @@ async def _(event):
             "key": "FFmpegMetadata",
             "prefer_ffmpeg": True,
             "geo_bypass": True,
+            "cookiefile": "cookies.txt",
             "outtmpl": f"%(id)s.{ext}",
             "logtostderr": False,
             "postprocessors": [
@@ -220,6 +221,7 @@ async def _(event):
             "key": "FFmpegMetadata",
             "prefer_ffmpeg": True,
             "geo_bypass": True,
+            "cookiefile": "cookies.txt",
             "outtmpl": f"%(id)s.{ext}",
             "logtostderr": False,
             "postprocessors": [{"key": "FFmpegMetadata"}],

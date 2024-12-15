@@ -22,7 +22,7 @@ async def _(event):
                 "@xcryasupan", filter=InputMessagesFilterVideo
             )
         ]
-        await event.cliient.send_file(
+        await event.client.send_file(
             event.chat_id, file=choice(asupannya), caption=f"Asupan BY 🥀{OWNER_NAME}🥀", reply_to=event.reply_to_msg_id
         )
         await xx.delete()

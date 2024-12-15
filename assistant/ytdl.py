@@ -8,6 +8,7 @@
 
 import os
 import re
+import request
 
 try:
     from PIL import Image
@@ -140,9 +141,9 @@ async def _(e):
     await e.edit(_text, buttons=_buttons)
 
 
-"""@callback(
+@callback(
     re.compile(
-        "ytdownloammm:(.*)",
+        "ytdownload:(.*)",
     ),
     owner=True,
 )
@@ -166,14 +167,6 @@ async def _(event):
             "cookiefile": "cookies.txt",
             "outtmpl": f"%(id)s.{ext}",
             "logtostderr": False,
-            "postprocessors": [
-                {
-                    "key": "FFmpegExtractAudio",
-                    "preferredcodec": ext,
-                    "preferredquality": format,
-                },
-                {"key": "FFmpegMetadata"},
-            ],
         }
 
         ytdl_data = await dler(event, link, opts, True)
@@ -219,6 +212,7 @@ async def _(event):
                 "format": "(bestvideo[height<=?720][width<=?1280][ext=mp4])+(bestaudio[ext=m4a])",
                 "outtmpl": f"%(id)s.{ext}",
                 "geo_bypass": True,
+                "cookiefile": "cookies.txt",
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
@@ -304,73 +298,3 @@ async def ytdl_back(event):
     if not BACK_BUTTON.get(id_):
         return await event.answer("Query Expired! Search again 🔍")
     await event.edit(**BACK_BUTTON[id_])
-"""
-from database.fns.ytdl import download_yt, get_yt_link
-
-from . import get_string, requests, ultroid_cmd
-
-
-@callback(
-    re.compile(
-        "ytdownload:(.*)",
-    ),
-    owner=True,
-)
-async def download_from_youtube_(event):
-    ytd = {
-        "prefer_ffmpeg": True,
-        "addmetadata": True,
-        "geo-bypass": True,
-        "nocheckcertificate": True,
-        "cookiefile": "cookies.txt",
-    }
-    opt = event.pattern_match.group(1).strip()
-    xx = await event.eor(get_string("com_1"))
-    if opt == "ax":
-        ytd["format"] = "bestaudio"
-        ytd["outtmpl"] = "%(id)s.m4a"
-        url = event.pattern_match.group(2)
-        if not url:
-            return await xx.eor(get_string("youtube_1"))
-        try:
-            requests.get(url)
-        except BaseException:
-            return await xx.eor(get_string("youtube_2"))
-    elif opt == "vx":
-        ytd["format"] = "best"
-        ytd["outtmpl"] = "%(id)s.mp4"
-        ytd["postprocessors"] = [{"key": "FFmpegMetadata"}]
-        url = event.pattern_match.group(2)
-        if not url:
-            return await xx.eor(get_string("youtube_3"))
-        try:
-            requests.get(url)
-        except BaseException:
-            return await xx.eor(get_string("youtube_4"))
-    elif opt == "song":
-        ytd["format"] = "bestaudio"
-        ytd["outtmpl"] = "%(id)s.m4a"
-        try:
-            query = event.text.split(" ", 1)[1]
-        except IndexError:
-            return await xx.eor(get_string("youtube_5"))
-        url = get_yt_link(query)
-        if not url:
-            return await xx.edit(get_string("unspl_1"))
-        await xx.eor(get_string("youtube_6"))
-    elif opt == "video":
-        ytd["format"] = "best"
-        ytd["outtmpl"] = "%(id)s.mp4"
-        ytd["postprocessors"] = [{"key": "FFmpegMetadata"}]
-        try:
-            query = event.text.split(" ", 1)[1]
-        except IndexError:
-            return await xx.eor(get_string("youtube_7"))
-        url = get_yt_link(query)
-        if not url:
-            return await xx.edit(get_string("unspl_1"))
-        await xx.eor(get_string("youtube_8"))
-    else:
-        return
-    await download_yt(xx, url, ytd)
-

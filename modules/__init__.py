@@ -13,7 +13,7 @@ from random import choice
 import requests
 from telethon import Button, events
 from telethon.tl import functions, types  # pylint:ignore
-
+from .. import *
 from pyUltroid import *
 from pyUltroid._misc._assistant import asst_cmd, callback, in_pattern
 from pyUltroid._misc._decorators import ultroid_cmd
@@ -25,7 +25,7 @@ from pyUltroid.fns.tools import *
 from pyUltroid.startup._database import _BaseDatabase as Database
 from pyUltroid.version import __version__, ultroid_version
 from strings import get_help, get_string
-
+from pyUltroid._misc._supporter import CMD_HNDLR
 
 udB: Database
 

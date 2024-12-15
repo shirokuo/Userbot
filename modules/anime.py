@@ -24,8 +24,8 @@ from telethon.tl.types import (
     MessageMediaDocument,
 )
 from telethon.utils import is_image, is_video
-
-#from . import CMD_HANDLER as cmd
+from .. import*
+from . import CMD_HNDLR as cmd
 from . import CMD_HELP
 from . import eor as edit_or_reply, ultroid_cmd as man_cmd
 

@@ -15,7 +15,17 @@ import sys
 import time
 from telethon.tl.functions import PingRequest
 from pyUltroid.fns.custom_markdown import CustomMarkdown
-from . import OWNER_NAME, start_time, time_formatter, udB, ultroid_cmd as xteam_cmd, get_string, ultroid_bot
+from . import (
+OWNER_NAME,
+OWNER_ID,
+start_time,
+time_formatter,
+udB,
+ultroid_cmd as xteam_cmd,
+get_string,
+ultroid_bot,
+eor,
+)
 
 async def mention_user(user_id):
     try:

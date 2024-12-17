@@ -36,7 +36,7 @@ def where_hosted():
         return "termux"
     if os.getenv("FLY_APP_NAME"):
         return "fly.io"
-    return "iPhone 16 Pro Max"
+    return "**[📱](emoji/5346181118884331907)**"
 
 
 if run_as_module:

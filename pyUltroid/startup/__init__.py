@@ -9,7 +9,7 @@ import os
 import platform
 import sys
 from logging import INFO, WARNING, FileHandler, StreamHandler, basicConfig, getLogger
-
+from pyUltroid.fns.custom_markdown import CustomMarkdown
 from .. import run_as_module
 from ._extra import _ask_input
 

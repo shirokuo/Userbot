@@ -36,7 +36,7 @@ def where_hosted():
         return "termux"
     if os.getenv("FLY_APP_NAME"):
         return "fly.io"
-    return "**[📱](emoji/5346181118884331907)**"
+    return "[📱](emoji/5346181118884331907)"
 
 
 if run_as_module:

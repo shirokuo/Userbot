@@ -46,7 +46,7 @@ if run_as_module:
     from ..version import __version__ as __pyUltroid__
     from ..version import ultroid_version
 
-    file = f"Userbot{sys.argv[6]}.log" if len(sys.argv) > 6 else "ultroid.log"
+    file = f"Userbot{sys.argv[6]}.log" if len(sys.argv) > 6 else "userbot.log"
 
     if os.path.exists(file):
         os.remove(file)

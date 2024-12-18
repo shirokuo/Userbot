@@ -188,7 +188,7 @@ async def lol(ult):
         except BaseException as er:
             LOGS.exception(er)
             try:
-                await ult.reply(file=asupan)
+                await ult.reply(file=pic)
                 await ult.reply(
                     als,
                     buttons=buttons if inline else None,
@@ -246,7 +246,7 @@ async def shutdownbot(ult):
 )
 async def _(event):
     opt = event.pattern_match.group(1).strip()
-    file = f"ultroid{sys.argv[-1]}.log" if len(sys.argv) > 1 else "ultroid.log"
+    file = f"userbot{sys.argv[-1]}.log" if len(sys.argv) > 1 else "ultroid.log"
     if opt == "heroku":
         await heroku_logs(event)
     elif opt == "carbon" and Carbon:
@@ -254,16 +254,16 @@ async def _(event):
         with open(file, "r") as f:
             code = f.read()[-2500:]
         file = await Carbon(
-            file_name="ultroid-logs",
+            file_name="userbot-logs",
             code=code,
             backgroundColor=choice(ATRA_COL),
         )
         if isinstance(file, dict):
             await event.eor(f"`{file}`")
             return
-        await event.reply("**Aiu Logs.**", file=file)
+        await event.reply("**userbot Logs.**", file=file)
     elif opt == "open":
-        with open("ultroid.log", "r") as f:
+        with open("userbot.log", "r") as f:
             file = f.read()[-4000:]
         return await event.eor(f"`{file}`")
     else:

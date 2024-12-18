@@ -216,15 +216,12 @@ async def _(event):
     elif lets_split[0] == "video":
         opts = {
             "format": str(format),
-            "addmetadata": True,
-            "key": "FFmpegMetadata",
-            "prefer_ffmpeg": True,
-            "geo_bypass": True,
             "outtmpl": f"%(id)s.{ext}",
-            "logtostderr": False,
-            "postprocessors": [{"key": "FFmpegMetadata"}],
+            "geo_bypass": True,
+            "nocheckcertificate": True,
+            "quiet": True,
+            "no_warnings": True,
         }
-
         ytdl_data = await dler(event, link, opts, True)
         title = ytdl_data["title"]
         if ytdl_data.get("artist"):

@@ -2,14 +2,17 @@
 import telethon # Library to interact with Telegram's API as a user or through a bot account 
 from telethon.tl.custom import Button
 from telethon import TelegramClient, events
-
+from .configs import Var
+from .startup import *
+from .startup._database import UltroidDB
+from .startup.BaseClient import UltroidClient
 import asyncio # Provides infrastructure for writing asynchronous code using coroutines.
-
+from . import ultroid_bot as client 
 # Imports for handling images and bytes
 from io import BytesIO
 from PIL import Image
 
-import config # Custom file containing configuration settings for the bot.
+#import config # Custom file containing configuration settings for the bot.
 
 # Import necessary modules from the vertexai library
 import vertexai
@@ -44,7 +47,7 @@ model = GenerativeModel("gemini-pro", generation_config=generation_config, safet
 vision_model = GenerativeModel("gemini-pro-vision", generation_config=generation_config, safety_settings=safety_settings)
 
 # Configure Telegram client
-client = TelegramClient(config.session_name_bot, config.API_ID, config.API_HASH).start(bot_token=config.BOT_TOKEN)
+#client = TelegramClient(config.session_name_bot, config.API_ID, config.API_HASH).start(bot_token=config.BOT_TOKEN)
 
 # Define button templates
 keyboard_stop = [[Button.inline("Stop and reset conversation", b"stop")]]

@@ -10,7 +10,7 @@ from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.functions.messages import DeleteHistoryRequest
 
 from . import ultroid_cmd as man_cmd
-from . import eor
+from . import eor, OWNER_NAME
 
 
 @man_cmd(pattern="sosmed(?: |$)(.*)")
@@ -43,6 +43,7 @@ async def insta(event):
             await event.client.send_file(
                 event.chat_id,
                 response.message.media,
+                caption=f"**Upload By: {OWNER_NAME}**",
             )
             await event.client.send_read_acknowledge(conv.chat_id)
             await event.client(DeleteHistoryRequest(peer=chat, max_id=0))

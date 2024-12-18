@@ -90,7 +90,7 @@ async def send_question_and_retrieve_result(prompt, conv, keyboard):
 
 
 # Define the main chatbot handler
-@client.on(events.NewMessage(pattern="(?i)/chat"))
+@client.on(events.NewMessage(pattern="chat"))
 async def handle_chat_command(event):
     """
     Starts a new conversation with the user.
@@ -165,7 +165,7 @@ async def handle_chat_command(event):
         return
 
 
-@client.on(events.NewMessage(pattern="(?i)/image"))
+@client.on(events.NewMessage(pattern="image"))
 async def handle_image_command(event):
     """
         Handles the /image command, where the bot requests the user to send an image
@@ -242,7 +242,7 @@ async def handle_image_command(event):
         return
 
 
-@client.on(events.NewMessage(pattern="(?i)/start"))
+@client.on(events.NewMessage(pattern="start"))
 async def handle_start_command(event):
     text = """Hello there! I'm Gemini 🤖, your friendly chatbot. I can answer your questions in a conversational manner and even recognize the contents of images. Let's get started!
     

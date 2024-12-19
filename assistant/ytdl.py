@@ -179,7 +179,7 @@ async def _(event):
             requests.get(url)
         except BaseException:
             return await xx.eor(get_string("youtube_4"))
-    elif opt == "song":
+    elif opt == "audio":
         ytd["format"] = "bestaudio"
         ytd["outtmpl"] = "%(id)s.m4a"
         try:

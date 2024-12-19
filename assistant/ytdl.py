@@ -17,7 +17,9 @@ from telethon import Button
 from telethon.errors.rpcerrorlist import FilePartLengthInvalidError, MediaEmptyError
 from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 from telethon.tl.types import InputWebDocument as wb
+from pyUltroid.fns.ytdl import download_yt, get_yt_link
 
+from . import get_string, requests, ultroid_cmd
 from pyUltroid.fns.helper import (
     bash,
     fast_download,
@@ -146,154 +148,63 @@ async def _(e):
     ),
     owner=True,
 )
-async def _(event):
-    url = event.pattern_match.group(1).strip().decode("UTF-8")
-    lets_split = url.split(":")
-    vid_id = lets_split[2]
-    link = _yt_base_url + vid_id
-    format = lets_split[1]
-    try:
-        ext = lets_split[3]
-    except IndexError:
-        ext = "mp3"
-    if lets_split[0] == "audio":
-        opts = {
-            "format": "bestaudio",
-            "addmetadata": True,
-            "key": "FFmpegMetadata",
-            "prefer_ffmpeg": True,
-            "geo_bypass": True,
-            "outtmpl": f"%(id)s.{ext}",
-            "logtostderr": False,
-            "postprocessors": [
-                {
-                    "key": "FFmpegExtractAudio",
-                    "preferredcodec": ext,
-                    "preferredquality": format,
-                },
-                {"key": "FFmpegMetadata"},
-            ],
-        }
-
-        ytdl_data = await dler(event, link, opts, True)
-        title = ytdl_data["title"]
-        if ytdl_data.get("artist"):
-            artist = ytdl_data["artist"]
-        elif ytdl_data.get("creator"):
-            artist = ytdl_data["creator"]
-        elif ytdl_data.get("channel"):
-            artist = ytdl_data["channel"]
-        views = numerize(ytdl_data.get("view_count")) or 0
-        thumb, _ = await fast_download(ytdl_data["thumbnail"], filename=f"{vid_id}.jpg")
-
-        likes = numerize(ytdl_data.get("like_count")) or 0
-        duration = ytdl_data.get("duration") or 0
-        description = (
-            ytdl_data["description"]
-            if len(ytdl_data["description"]) < 100
-            else ytdl_data["description"][:100]
-        )
-        description = description or "None"
-        filepath = f"{vid_id}.{ext}"
-        if not os.path.exists(filepath):
-            filepath = f"{filepath}.{ext}"
-        size = os.path.getsize(filepath)
-        file, _ = await event.client.fast_uploader(
-            filepath,
-            filename=f"{title}.{ext}",
-            show_progress=True,
-            event=event,
-            to_delete=True,
-        )
-
-        attributes = [
-            DocumentAttributeAudio(
-                duration=int(duration),
-                title=title,
-                performer=artist,
-            ),
-        ]
-    elif lets_split[0] == "video":
-        opts = {
-            "format": str(format),
-            "outtmpl": f"%(id)s.{ext}",
-            "geo_bypass": True,
-            "nocheckcertificate": True,
-            "quiet": True,
-            "no_warnings": True,
-        }
-        ytdl_data = await dler(event, link, opts, True)
-        title = ytdl_data["title"]
-        if ytdl_data.get("artist"):
-            artist = ytdl_data["artist"]
-        elif ytdl_data.get("creator"):
-            artist = ytdl_data["creator"]
-        elif ytdl_data.get("channel"):
-            artist = ytdl_data["channel"]
-        views = numerize(ytdl_data.get("view_count")) or 0
-        thumb, _ = await fast_download(ytdl_data["thumbnail"], filename=f"{vid_id}.jpg")
-
+async def download_from_youtube_(event):
+    ytd = {
+        "prefer_ffmpeg": True,
+        "addmetadata": True,
+        "geo-bypass": True,
+        "nocheckcertificate": True,
+        "cookiefile": "cookies.txt",
+    }
+    opt = event.pattern_match.group(1).strip()
+    xx = await event.eor(get_string("com_1"))
+    if opt == "ax":
+        ytd["format"] = "bestaudio"
+        ytd["outtmpl"] = "%(id)s.m4a"
+        url = event.pattern_match.group(2)
+        if not url:
+            return await xx.eor(get_string("youtube_1"))
         try:
-            Image.open(thumb).save(thumb, "JPEG")
-        except Exception as er:
-            LOGS.exception(er)
-            thumb = None
-        description = (
-            ytdl_data["description"]
-            if len(ytdl_data["description"]) < 100
-            else ytdl_data["description"][:100]
-        )
-        likes = numerize(ytdl_data.get("like_count")) or 0
-        hi, wi = ytdl_data.get("height") or 720, ytdl_data.get("width") or 1280
-        duration = ytdl_data.get("duration") or 0
-        filepath = f"{vid_id}.mkv"
-        if not os.path.exists(filepath):
-            filepath = f"{filepath}.webm"
-        size = os.path.getsize(filepath)
-        file, _ = await event.client.fast_uploader(
-            filepath,
-            filename=f"{title}.mkv",
-            show_progress=True,
-            event=event,
-            to_delete=True,
-        )
-
-        attributes = [
-            DocumentAttributeVideo(
-                duration=int(duration),
-                w=wi,
-                h=hi,
-                supports_streaming=True,
-            ),
-        ]
-    description = description if description != "" else "None"
-    text = f"**Title: [{title}]({_yt_base_url}{vid_id})**\n\n"
-    text += f"`📝 Description: {description}\n\n"
-    text += f"「 Duration: {time_formatter(int(duration)*1000)} 」\n"
-    text += f"「 Artist: {artist} 」\n"
-    text += f"「 Views: {views} 」\n"
-    text += f"「 Likes: {likes} 」\n"
-    text += f"「 Size: {humanbytes(size)} 」`"
-    button = Button.switch_inline("Search More", query="yt ", same_peer=True)
-    try:
-        await event.edit(
-            text,
-            file=file,
-            buttons=button,
-            attributes=attributes,
-            thumb=thumb,
-        )
-    except (FilePartLengthInvalidError, MediaEmptyError):
-        file = await asst.send_message(
-            udB.get_key("LOG_CHANNEL"),
-            text,
-            file=file,
-            buttons=button,
-            attributes=attributes,
-            thumb=thumb,
-        )
-        await event.edit(text, file=file.media, buttons=button)
-    await bash(f"rm {vid_id}.jpg")
+            requests.get(url)
+        except BaseException:
+            return await xx.eor(get_string("youtube_2"))
+    elif opt == "vx":
+        ytd["format"] = "best"
+        ytd["outtmpl"] = "%(id)s.mp4"
+        ytd["postprocessors"] = [{"key": "FFmpegMetadata"}]
+        url = event.pattern_match.group(2)
+        if not url:
+            return await xx.eor(get_string("youtube_3"))
+        try:
+            requests.get(url)
+        except BaseException:
+            return await xx.eor(get_string("youtube_4"))
+    elif opt == "song":
+        ytd["format"] = "bestaudio"
+        ytd["outtmpl"] = "%(id)s.m4a"
+        try:
+            query = event.text.split(" ", 1)[1]
+        except IndexError:
+            return await xx.eor(get_string("youtube_5"))
+        url = get_yt_link(query)
+        if not url:
+            return await xx.edit(get_string("unspl_1"))
+        await xx.eor(get_string("youtube_6"))
+    elif opt == "video":
+        ytd["format"] = "best"
+        ytd["outtmpl"] = "%(id)s.mp4"
+        ytd["postprocessors"] = [{"key": "FFmpegMetadata"}]
+        try:
+            query = event.text.split(" ", 1)[1]
+        except IndexError:
+            return await xx.eor(get_string("youtube_7"))
+        url = get_yt_link(query)
+        if not url:
+            return await xx.edit(get_string("unspl_1"))
+        await xx.eor(get_string("youtube_8"))
+    else:
+        return
+    await download_yt(xx, url, ytd)
 
 
 @callback(re.compile("ytdl_back:(.*)"), owner=True)

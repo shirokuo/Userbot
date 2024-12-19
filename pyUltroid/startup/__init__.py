@@ -36,7 +36,7 @@ def where_hosted():
         return "termux"
     if os.getenv("FLY_APP_NAME"):
         return "fly.io"
-    return "Ubuntu 24.04.1 Noble Numbat"
+    return "Ubuntu 24.04.1"
 
 
 if run_as_module:

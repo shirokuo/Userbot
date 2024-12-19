@@ -148,7 +148,7 @@ async def _(e):
     ),
     owner=True,
 )
-async def download_from_youtube_(event):
+async def _(event):
     ytd = {
         "prefer_ffmpeg": True,
         "addmetadata": True,

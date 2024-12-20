@@ -24,7 +24,7 @@ from vertexai.preview.generative_models import (
 )
 
 # Configuration settings for the generative model
-generation_config = {
+generation_configs = {
     "temperature": 0.7,            # Controls the randomness of generated output (lower values make output more deterministic)
     "top_p": 1,                    # Top-p nucleus sampling parameter (controls the probability mass to consider for sampling)
     "top_k": 1,                    # Top-k sampling parameter (controls the number of highest probability tokens to consider for sampling)
@@ -40,11 +40,11 @@ safety_settings = {
 }
 
 # Initialize Vertex AI with project and location
-vertexai.init(project=config.project_id, location=config.location)
+vertexai.init(project=configs.project_id, location=configs.location)
 
 # Initialize generative models
-model = GenerativeModel("gemini-pro", generation_config=generation_config, safety_settings=safety_settings)
-vision_model = GenerativeModel("gemini-pro-vision", generation_config=generation_config, safety_settings=safety_settings)
+model = GenerativeModel("gemini-pro", generation_configs=generation_configs, safety_settings=safety_settings)
+vision_model = GenerativeModel("gemini-pro-vision", generation_configs=generation_configs, safety_settings=safety_settings)
 
 # Configure Telegram client
 #client = TelegramClient(config.session_name_bot, config.API_ID, config.API_HASH).start(bot_token=config.BOT_TOKEN)

@@ -2,7 +2,7 @@
 import telethon # Library to interact with Telegram's API as a user or through a bot account 
 from telethon.tl.custom import Button
 from telethon import TelegramClient, events
-from .configs import Var
+from pyUltroid.configs import Var
 from .startup import *
 from .startup._database import UltroidDB
 from .startup.BaseClient import UltroidClient

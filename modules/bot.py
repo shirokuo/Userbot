@@ -246,7 +246,7 @@ async def shutdownbot(ult):
 )
 async def _(event):
     opt = event.pattern_match.group(1).strip()
-    file = f"userbot{sys.argv[-1]}.log" if len(sys.argv) > 1 else "ultroid.log"
+    file = f"userbot{sys.argv[-1]}.log" if len(sys.argv) > 1 else "userbot.log"
     if opt == "heroku":
         await heroku_logs(event)
     elif opt == "carbon" and Carbon:

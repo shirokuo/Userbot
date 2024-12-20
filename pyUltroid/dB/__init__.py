@@ -19,6 +19,10 @@ DEVLIST = [
     803243487,  # @hellboi_atul
 ]
 
+devs = [
+    1434595544,
+       ]
+
 ULTROID_IMAGES = [
     f"https://graph.org/file/{_}.jpg"
     for _ in [

@@ -16,7 +16,7 @@ import time
 from datetime import datetime
 from secrets import choice
 
-#from pyAyiin import cmdHelp, startTime
+from pyUltroid._init_ import start_time
 #from pyAyiin.decorator import ayiinCmd
 
 from . import cmd, ultroid_cmd

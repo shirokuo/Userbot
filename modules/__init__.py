@@ -153,9 +153,9 @@ ATRA_COL = [
     "Moccasin",
     "PowderBlue",
 ]
-CONFIG_VAR = [  
-    Don't use quotes( " and ' )
 
+CONFIG_VAR = [ 
+Don't use quotes " and ' 
 API_ID=
 API_HASH=
 SESSION=

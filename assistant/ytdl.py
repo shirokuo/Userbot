@@ -8,7 +8,7 @@
 
 import os
 import re
-
+import request 
 try:
     from PIL import Image
 except ImportError:
@@ -19,7 +19,7 @@ from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 from telethon.tl.types import InputWebDocument as wb
 from pyUltroid.fns.ytdl import download_yt, get_yt_link
 
-from . import get_string, requests, ultroid_cmd
+from . import get_string, ultroid_cmd
 from pyUltroid.fns.helper import (
     bash,
     fast_download,

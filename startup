@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
+# UserBot
+# Copyright (C) 2021-2023 TeamX
 #
 # This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
 # PLease read the GNU Affero General Public License in <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 
 echo "
-            ┏┳┓╋┏┓╋╋╋╋┏┓┏┓
-            ┃┃┣┓┃┗┳┳┳━╋╋┛┃
-            ┃┃┃┗┫┏┫┏┫╋┃┃╋┃
-            ┗━┻━┻━┻┛┗━┻┻━┛
+            TEAMX USERBOT
 
-      Visit @TheUltroid for updates!!
+      Visit @xteam-cloner for updates!!
 
 "
 if [ -f .env ] ; then  set -o allexport; source .env; set +o allexport ; fi

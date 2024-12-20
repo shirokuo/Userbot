@@ -20,7 +20,7 @@ from secrets import choice
 #from pyAyiin.decorator import ayiinCmd
 
 from . import cmd, ultroid_cmd as ayiincmd
-#from .ping import get_readable_time
+from . import get_readable_time
 
 
 absen = [

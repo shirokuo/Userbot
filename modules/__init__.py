@@ -153,18 +153,3 @@ ATRA_COL = [
     "Moccasin",
     "PowderBlue",
 ]
-
-CONFIG_VAR = [ 
-Don't use quotes " and ' 
-API_ID=
-API_HASH=
-SESSION=
-MONGO_URI=
-LOG_CHANNEL=
-BOT_TOKEN=
-    # for sql
-    DATABASE_URL= 
-    # for REDISDB users
-    REDIS_URI=
-    REDIS_PASSWORD=
-]

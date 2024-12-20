@@ -38,6 +38,7 @@ from . import (
     LOGS,
     OWNER_NAME,
     ULTROID_IMAGES,
+    ALIVE_TEXT,
     Button,
     Carbon,
     Telegraph,

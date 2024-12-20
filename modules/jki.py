@@ -19,7 +19,7 @@ from secrets import choice
 #from pyAyiin import cmdHelp, startTime
 #from pyAyiin.decorator import ayiinCmd
 
-from . import cmd, ultroid_cmd as ayiincmd
+from . import cmd, ultroid_cmd
 from . import get_readable_time
 from pyUltroid.dB import devs
 
@@ -42,7 +42,7 @@ ayiincakep = [
 ]
 
 
-@ayiinCmd("cping$", devs=True)
+@ultroid_cmd(pattern="cping$", devs=True)
 async def _(ping):
     uptime = await get_readable_time((time.time() - startTime))
     start = datetime.now()
@@ -66,12 +66,12 @@ async def _(ping):
 
 # Absen by : mrismanaziz <https://github.com/mrismanaziz/man-userbot>
 
-@ayiinCmd("absen$", devs=True)
+@ultroid_cmd(pattern="absen$", devs=True)
 async def ayiinabsen(ganteng):
     await ganteng.reply(choice(absen))
 
 
-@ayiinCmd("Aku ganteng kan$", devs=True)
+@ultroid_cmd(pattern="Aku ganteng kan$", devs=True)
 async def ayiin(ganteng):
     await ganteng.reply(choice(ayiincakep))
 

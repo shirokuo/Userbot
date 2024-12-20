@@ -9,7 +9,6 @@ from . import get_help
 
 __doc__ = get_help("help_bot")
 
-import asyncio
 import os
 import sys
 import time
@@ -21,14 +20,9 @@ from telethon.errors.rpcerrorlist import (
     BotMethodInvalidError,
     ChatSendMediaForbiddenError,
 )
-from telethon.events import NewMessage
-from telethon.tl.custom import Dialog
-from telethon.tl.functions import PingRequest
-from telethon.tl.types import Channel, Chat, User
-from database.version import __version__ as UltVer
-from database.fns.custom_markdown import CustomMarkdown
-from database.dB.__init__ import DEVLIST
-from database.dB import asupan 
+
+from pyUltroid.version import __version__ as UltVer
+
 from . import HOSTED_ON, LOGS
 
 try:
@@ -38,13 +32,12 @@ except ImportError:
     Repo = None
 
 from telethon.utils import resolve_bot_file_id
+
 from . import (
     ATRA_COL,
     LOGS,
     OWNER_NAME,
-    OWNER_ID,
     ULTROID_IMAGES,
-    ALIVE_TEXT,
     Button,
     Carbon,
     Telegraph,
@@ -60,13 +53,11 @@ from . import (
     heroku_logs,
     in_pattern,
     inline_pic,
-    ping_pic,
     restart,
     shutdown,
     start_time,
     time_formatter,
     udB,
-    ultroid_bot,
     ultroid_cmd,
     ultroid_version,
     updater,
@@ -79,43 +70,21 @@ def ULTPIC():
 
 buttons = [
     [
-        Button.url(get_string("bot_3"), "https://github.com/JIYOXC/AIU-USERBOT"),
-        Button.url(get_string("bot_4"), "t.me/aiu_support"),
+        Button.url(get_string("bot_3"), "https://github.com/TeamUltroid/Ultroid"),
+        Button.url(get_string("bot_4"), "t.me/UltroidSupportChat"),
     ]
 ]
 
-DEVS = [
-    2073693007,
-    719195224,  # @xditya
-    1322549723,  # @danish_00
-    1903729401,  # @its_buddhhu
-    1303895686,  # @Sipak_OP
-    611816596,  # @Arnab431
-    1318486004,  # @sppidy
-    803243487,  # @hellboi_atul
-]
-
-
 # Will move to strings
 alive_txt = """
-  ♨️ Version - {}
-  ♨️ Py-Ultroid - {}
-  ♨️ Telethon - {}
+The Ultroid Userbot
+
+  ◍ Version - {}
+  ◍ Py-Ultroid - {}
+  ◍ Telethon - {}
 """
 
-in_alive =  "**\n\n**{}**\n\n[💠](emoji/5971944878815317190)**ᴏᴡɴᴇʀ** - `{}`\n[💠](emoji/5971944878815317190)**ᴀɪᴜ** - `{}`\n[💠](emoji/5971944878815317190)**ᴘʏ-ᴀɪᴜ** - `{}`\n[💠](emoji/5971944878815317190)**ᴜᴘᴛɪᴍᴇ** - `{}`\n[💠](emoji/5971944878815317190)**ᴘʏᴛʜᴏɴ** - `{}`\n[💠](emoji/5971944878815317190)**ᴛᴇʟᴇᴛʜᴏɴ** - `{}`\n[💠](emoji/5971944878815317190)**ʙʀᴀɴᴄʜ - `{}`"
-
-absen = [
-    "**Hadir Sayang** 😳",
-    "**Hadir Bang Jiyo** 😁",
-    "**Maaf ka habis nemenin Bang Jiyo** 🥺",
-    "**Maaf ka habis disuruh Tuan Bang Jiyo** 🥺🙏🏻",
-    "**Hadir Jiyo Sayang** 😘",
-    "**Hadir Jiyo Akuuuuhhh** ☺️",
-    "**Hadir Jiyo brother Aku** 🥰",
-    "**Sokap bet lu**",
-    "**Apasi Bawel** 🥰",
-]
+in_alive = "{}\n\n🌀 <b>Ultroid Version -><b> <code>{}</code>\n🌀 <b>PyUltroid -></b> <code>{}</code>\n🌀 <b>Python -></b> <code>{}</code>\n🌀 <b>Uptime -></b> <code>{}</code>\n🌀 <b>Branch -></b>[ {} ]\n\n• <b>Join @TeamUltroid</b>"
 
 
 @callback("alive")
@@ -128,7 +97,6 @@ async def alive(event):
     pattern="alive( (.*)|$)",
 )
 async def lol(ult):
-    ultroid_bot.parse_mode = CustomMarkdown()
     match = ult.pattern_match.group(1).strip()
     inline = None
     if match in ["inline", "i"]:
@@ -140,7 +108,9 @@ async def lol(ult):
         except BaseException as er:
             LOGS.exception(er)
         inline = True
-        pic=choice(asupan)
+    pic = udB.get_key("ALIVE_PIC")
+    if isinstance(pic, list):
+        pic = choice(pic)
     uptime = time_formatter((time.time() - start_time) * 1000)
     header=choice(ALIVE_TEXT)
     y = Repo().active_branch
@@ -160,8 +130,9 @@ async def lol(ult):
         )
 
         if _e := udB.get_key("ALIVE_EMOJI"):
-            als = als.replace("♨️", _e)
+            als = als.replace("🌀", _e)
     else:
+        parse = "md"
         als = (get_string("alive_1")).format(
             header,
             OWNER_NAME,
@@ -174,12 +145,13 @@ async def lol(ult):
         )
 
         if a := udB.get_key("ALIVE_EMOJI"):
-            als = als.replace("♨️", a)
-    if asupan:
+            als = als.replace("✵", a)
+    if pic:
         try:
             await ult.reply(
                 als,
-                file=asupan,
+                file=pic,
+                parse_mode=parse,
                 link_preview=False,
                 buttons=buttons if inline else None,
             )
@@ -189,9 +161,10 @@ async def lol(ult):
         except BaseException as er:
             LOGS.exception(er)
             try:
-                await ult.reply(file=asupan)
+                await ult.reply(file=pic)
                 await ult.reply(
                     als,
+                    parse_mode=parse,
                     buttons=buttons if inline else None,
                     link_preview=False,
                 )
@@ -201,40 +174,11 @@ async def lol(ult):
     await eor(
         ult,
         als,
+        parse_mode=parse,
         link_preview=False,
         buttons=buttons if inline else None,
     )
-
-
-async def mention_user(user_id):
-    try:
-        user_entity = await ultroid_bot.get_entity(user_id)
-        first_name = user_entity.first_name
-        mention_text = f"[{first_name}](tg://user?id={user_id})"
-        return mention_text
-    except Exception as e:
-        print(f"Failed to mention user: {e}")
-
-@ultroid_cmd(pattern="ping(|x|s)$", chats=[], type=["official", "assistant"])
-async def _(event):
-    ultroid_bot.parse_mode = CustomMarkdown()
-    user_id = OWNER_ID
-    ment = await mention_user(user_id)
-    prem = event.pattern_match.group(1)
-    start = time.time()
-    x = await event.eor("ping")
-    end = round((time.time() - start) * 1000)
-    uptime = time_formatter((time.time() - start_time) * 1000)
-    if prem == "x":
-        await x.reply(get_string("pping").format(end, uptime))
-    elif prem == "s":
-        await x.reply(get_string("iping").format(end))
-    else:
-        pic = udB.get_key("PING_PIC")
-        await asyncio.sleep(1)
-        await x.delete()
-        await event.respond(get_string("ping").format(end, uptime, f"{OWNER_NAME}"), file=pic)
-
+    
 @ultroid_cmd(
     pattern="cmds$",
 )
@@ -260,7 +204,7 @@ async def restartbt(ult):
     if len(sys.argv) > 1:
         os.execl(sys.executable, sys.executable, "main.py")
     else:
-        os.execl(sys.executable, sys.executable, "-m", "database")
+        os.execl(sys.executable, sys.executable, "-m", "pyUltroid")
 
 
 @ultroid_cmd(
@@ -277,7 +221,7 @@ async def shutdownbot(ult):
 )
 async def _(event):
     opt = event.pattern_match.group(1).strip()
-    file = f"ultroid{sys.argv[-1]}.log" if len(sys.argv) > 1 else "ultroid.log"
+    file = f"ultroid{sys.argv[-1]}.log" if len(sys.argv) > 1 else "userbot.log"
     if opt == "heroku":
         await heroku_logs(event)
     elif opt == "carbon" and Carbon:
@@ -285,16 +229,16 @@ async def _(event):
         with open(file, "r") as f:
             code = f.read()[-2500:]
         file = await Carbon(
-            file_name="ultroid-logs",
+            file_name="userbot-logs",
             code=code,
             backgroundColor=choice(ATRA_COL),
         )
         if isinstance(file, dict):
             await event.eor(f"`{file}`")
             return
-        await event.reply("**Aiu Logs.**", file=file)
+        await event.reply("**userbot Logs.**", file=file)
     elif opt == "open":
-        with open("ultroid.log", "r") as f:
+        with open("userbot.log", "r") as f:
             file = f.read()[-4000:]
         return await event.eor(f"`{file}`")
     else:
@@ -308,7 +252,7 @@ async def inline_alive(ult):
     if isinstance(pic, list):
         pic = choice(pic)
     uptime = time_formatter((time.time() - start_time) * 1000)
-    header = udB.get_key("ALIVE_TEXT") or get_string("bot_1")
+    header=choice(ALIVE_TEXT)
     y = Repo().active_branch
     xx = Repo().remotes[0].config_reader.get("url")
     rep = xx.replace(".git", f"/tree/{y}")
@@ -318,7 +262,7 @@ async def inline_alive(ult):
     )
 
     if _e := udB.get_key("ALIVE_EMOJI"):
-        als = als.replace("♨️", _e)
+        als = als.replace("🌀", _e)
     builder = ult.builder
     if pic:
         try:
@@ -338,7 +282,7 @@ async def inline_alive(ult):
                     await builder.document(
                         pic,
                         title="Inline Alive",
-                        description="@AIUSUPPORTT",
+                        description="@xteam-cloner",
                         parse_mode="html",
                         buttons=buttons,
                     )
@@ -364,7 +308,7 @@ async def _(e):
         await bash("git pull -f && pip3 install -r requirements.txt")
         call_back()
         await xx.edit(get_string("upd_7"))
-        os.execl(sys.executable, "python3", "-m", "database")
+        os.execl(sys.executable, "python3", "-m", "pyUltroid")
         # return
     m = await updater()
     branch = (Repo.init()).active_branch
@@ -372,7 +316,7 @@ async def _(e):
         x = await asst.send_file(
             udB.get_key("LOG_CHANNEL"),
             ULTPIC(),
-            caption="💠**Update Available**💠",
+            caption="• **Update Available** •",
             force_document=False,
             buttons=Button.inline("Changelogs", data="changes"),
         )
@@ -384,7 +328,7 @@ async def _(e):
         )
     else:
         await xx.edit(
-            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://github.com/JIYOXC/AIU-USERBOT/tree/{branch}">[{branch}]</a></strong>',
+            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://github.com/TeamUltroid/Ultroid/tree/{branch}">[{branch}]</a></strong>',
             parse_mode="html",
             link_preview=False,
         )
@@ -399,4 +343,4 @@ async def updava(event):
         caption="• **Update Available** •",
         force_document=False,
         buttons=Button.inline("Changelogs", data="changes"),
-    )
+            )

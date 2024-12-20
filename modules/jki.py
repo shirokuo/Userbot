@@ -21,7 +21,7 @@ from secrets import choice
 
 from . import cmd, ultroid_cmd as ayiincmd
 from . import get_readable_time
-
+from pyUltroid.dB import devs
 
 absen = [
     "**𝙃𝙖𝙙𝙞𝙧 𝙙𝙤𝙣𝙜 𝙏𝙤𝙙** 😁",

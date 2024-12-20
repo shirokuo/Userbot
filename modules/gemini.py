@@ -3,9 +3,9 @@ import telethon # Library to interact with Telegram's API as a user or through a
 from telethon.tl.custom import Button
 from telethon import TelegramClient, events
 from pyUltroid.configs import Var
-from .startup import *
-from .startup._database import UltroidDB
-from .startup.BaseClient import UltroidClient
+from pyUltroid.startup import *
+from pyUltroid.startup._database import UltroidDB
+from pyUltroid.startup.BaseClient import UltroidClient
 import asyncio # Provides infrastructure for writing asynchronous code using coroutines.
 from . import ultroid_bot as client 
 # Imports for handling images and bytes

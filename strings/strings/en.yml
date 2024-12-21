@@ -656,3 +656,4 @@ help_ziptools: "\n\n• `{i}zip <reply to file>`\n    zip the replied file\n    
 help_asupan: "\n\n[💠](emoji/5971944878815317190)`{i}asupan`\n  To send intake randomly.\n\n[💠](emoji/5971944878815317190)`{i}pap`\n  To send pap randomly.\n\n[💠](emoji/5971944878815317190)`{i}ppcp`\n  To send PP couples randomly.\n\n"
 help_cd: "\n\n• `{i}cd <plugin_name>`\n\n Send any Installed Plugin to the Chat!`\n"
 help_sosmed: " -\n\n• `{i}sosmed link <tiktok|ig|fb>`\n\n Download video from tiktok, ig, fb\n"
+help_hack: " -\n\n• `{i}hack <Do a Hackk With Replied user>."

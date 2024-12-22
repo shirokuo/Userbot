@@ -39,6 +39,7 @@ from . import (
     OWNER_NAME,
     ULTROID_IMAGES,
     ALIVE_TEXT,
+    ALIVE_NAME,
     Button,
     Carbon,
     Telegraph,
@@ -113,6 +114,7 @@ async def lol(ult):
     if isinstance(pic, list):
         pic = choice(pic)
     uptime = time_formatter((time.time() - start_time) * 1000)
+    an=choice(ALIVE_NAME)
     header=choice(ALIVE_TEXT)
     y = Repo().active_branch
     xx = Repo().remotes[0].config_reader.get("url")
@@ -122,6 +124,7 @@ async def lol(ult):
         kk = f"<a href={rep}>{y}</a>"
         parse = "html"
         als = in_alive.format(
+            an,
             header,
             f"{ultroid_version} [{HOSTED_ON}]",
             UltVer,
@@ -135,6 +138,7 @@ async def lol(ult):
     else:
         parse = "md"
         als = (get_string("alive_1")).format(
+            an,
             header,
             OWNER_NAME,
             f"{ultroid_version} [{HOSTED_ON}]",

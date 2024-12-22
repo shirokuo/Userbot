@@ -41,11 +41,9 @@ ALIVE_NAME = [
     "━━━✿ ᴜꜱᴇʀʙᴏᴛ ɪꜱ ᴀʟɪᴠᴇ ✿━━━"
 ]
 
-ALIVE_TEXT = [
-    [
-        Button.url("• xteam •", url="https://github.com/xteam-cloner/Userbot"),
-    ],
-]
+ALIVE_TEXT = """
+[Click Here](https://github.com/xteam-cloner/Userbot)
+"""
 
 PING_IMAGES = [f"/resources/extras/ping_pic.mp4"]
 

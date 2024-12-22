@@ -41,13 +41,8 @@ ALIVE_NAME = [
 ]
 
 ALIVE_TEXT = [
-        "Try taking a bath with Hydrochloric 
-        Acid instead of water.",
-    "Try this: if you hold your breath underwater for an hour, 
-    you can hold it forever.",
-    "Go Green! Stop breathing Oxygen.",
-    "God is looking for you. 
-    You must go to meet him.",
+      "CAADAQADeAIAAm_BZBQh8owdViocCAI",
+]
     "give 100%. Now, let's donate 
     your blood.",
     "Try jumping off a hundred story 
@@ -91,7 +86,7 @@ ALIVE_TEXT = [
     This will be valuable experience.",
     "You could be the first person 
     to step on the sun. Good luck.",
-]
+
     
 PING_IMAGES = [f"/resources/extras/ping_pic.mp4"]
 

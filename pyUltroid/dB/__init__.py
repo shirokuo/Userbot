@@ -41,32 +41,56 @@ ALIVE_NAME = [
 ]
 
 ALIVE_TEXT = [
-        "Try taking a bath with Hydrochloric Acid instead of water.",
-    "Try this: if you hold your breath underwater for an hour, you can hold it forever.",
+        "Try taking a bath with Hydrochloric 
+        Acid instead of water.",
+    "Try this: if you hold your breath underwater for an hour, 
+    you can hold it forever.",
     "Go Green! Stop breathing Oxygen.",
-    "God is looking for you. You must go to meet him.",
-    "give 100%. Now, let's donate your blood.",
-    "Try jumping off a hundred story building but you can only do it once.",
-    "You should donate your brain seeing as you never use it.",
-    "Volunteer for targets in the shooting range.",
-    "Headshots are fun. Get yourself one.",
-    "You should try swimming with great white sharks.",
-    "You should paint yourself red and run a bull marathon.",
-    "You can stay underwater for the rest of your life without ever coming back up.",
-    "How about you stop breathing for 1 day? That would be great.",
-    "Try provoking a tiger when you're both in a cage.",
-    "Have you tried shooting yourself 100m up using a cannon.",
-    "You should try holding TNT in your mouth and lighting it.",
-    "Try playing catch and throw with RDX it's fun.",
-    "I heard phogine is poisonous but I guess you don't mind inhaling it for fun.",
-    "Launch yourself into space while forgetting about oxygen on Earth.",
-    "You should try playing snakes and ladders, with real snakes and no ladders.",
+    "God is looking for you. 
+    You must go to meet him.",
+    "give 100%. Now, let's donate 
+    your blood.",
+    "Try jumping off a hundred story 
+    building but you can only do it once.",
+    "You should donate your 
+    brain seeing as you never use it.",
+    "Volunteer for targets 
+    in the shooting range.",
+    "Headshots are fun. 
+    Get yourself one.",
+    "You should try swimming 
+    with great white sharks.",
+    "You should paint yourself 
+    red and run a bull marathon.",
+    "You can stay underwater for the rest of your
+    life without ever coming back up.",
+    "How about you stop breathing for
+    1 day? That would be great.",
+    "Try provoking a tiger 
+    when you're both in a cage.",
+    "Have you tried shooting 
+    yourself 100m up using a cannon.",
+    "You should try holding TNT 
+    in your mouth and lighting it.",
+    "Try playing catch and 
+    throw with RDX it's fun.",
+    "I heard phogine is poisonous but I guess
+    you don't mind inhaling it for fun.",
+    "Launch yourself into space while 
+    forgetting about oxygen on Earth.",
+    "You should try playing snakes and ladders, 
+    with real snakes and no ladders.",
     "Dancing naked on some HT cables.",
-    "Active Volcano is the best swimming pool for you.",
-    "You should try taking a hot bath in a volcano.",
-    "Try to spend one day in a coffin and it will be yours forever.",
-    "Hit Uranium with slow-moving neutrons in front of you. This will be valuable experience.",
-    "You could be the first person to step on the sun. Good luck.",
+    "Active Volcano is the
+    best swimming pool for you.",
+    "You should try taking 
+    a hot bath in a volcano.",
+    "Try to spend one day in 
+    a coffin and it will be yours forever.",
+    "Hit Uranium with slow-moving neutrons in front of you. 
+    This will be valuable experience.",
+    "You could be the first person 
+    to step on the sun. Good luck.",
 ]
     
 PING_IMAGES = [f"/resources/extras/ping_pic.mp4"]

@@ -36,6 +36,10 @@ ULTROID_IMAGES = [
     ]
 ]
 
+ALIVE_NAME = [
+    "✨ ᴜꜱᴇʀʙᴏᴛ ɪꜱ ᴀʟɪᴠᴇ ✨"
+]
+
 ALIVE_TEXT = [
         "Try taking a bath with Hydrochloric Acid instead of water.",
     "Try this: if you hold your breath underwater for an hour, you can hold it forever.",

@@ -37,11 +37,11 @@ ULTROID_IMAGES = [
 ]
 
 ALIVE_NAME = [
-    "✨ ᴜꜱᴇʀʙᴏᴛ ɪꜱ ᴀʟɪᴠᴇ ✨"
+    "━━━✨ ᴜꜱᴇʀʙᴏᴛ ɪꜱ ᴀʟɪᴠᴇ ✨━━━"
 ]
 
 ALIVE_TEXT = [
-      "CAADAQADeAIAAm_BZBQh8owdViocCAI"
+      "♥️"
 ]
 
 PING_IMAGES = [f"/resources/extras/ping_pic.mp4"]

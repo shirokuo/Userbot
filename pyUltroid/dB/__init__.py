@@ -42,7 +42,7 @@ ALIVE_NAME = [
 ]
 
 ALIVE_TEXT = [
-[Click Here](https://github.com/xteam-cloner/Userbot)
+❍❍❍❍❍❍❍❍❍❍❍❍❍❍❍❍
 ]
 
 PING_IMAGES = [f"/resources/extras/ping_pic.mp4"]

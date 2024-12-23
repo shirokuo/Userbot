@@ -23,7 +23,7 @@ def gemini(args: str) -> str:
         return "Failed to generate text using Gemini API."
 
 @on_message("gemi", sudo=True)
-async def gemini_handler(client: Client, message: Message):
+async def gemini_handler(message):
     user_input = message.text.split(None, 1)
     if len(user_input) < 2:
         hell = await hellbot.edit(

@@ -23,8 +23,7 @@ from telethon.errors.rpcerrorlist import (
 
 from pyUltroid.version import __version__ as UltVer
 
-from . import HOSTED_ON, LOGS
-from ApiNyaEr.teks import ISLAMIC
+from . import HOSTED_ON, LOGS, QUOTES
 try:
     from git import Repo
 except ImportError:
@@ -115,7 +114,7 @@ async def lol(ult):
         pic = choice(pic)
     uptime = time_formatter((time.time() - start_time) * 1000)
     an=choice(ALIVE_NAME)
-    header=choice(ISLAMIC)
+    header=choice(QUOTES)
     y = Repo().active_branch
     xx = Repo().remotes[0].config_reader.get("url")
     rep = xx.replace(".git", f"/tree/{y}")

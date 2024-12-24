@@ -10,7 +10,7 @@ import os
 import time
 import datetime
 from random import choice
-from ApiNyaEr.teks import ISLAMI as QUOTES
+from ApiNyaEr.teks import ISLAMIC as QUOTES
 import requests
 from telethon import Button, events
 from telethon.tl import functions, types  # pylint:ignore

@@ -132,7 +132,7 @@ def load_other_plugins(addons=None, pmbot=None, manager=None, vcbot=None):
                 )
             try:
                 if not os.path.exists("vcmusic/downloads"):
-                    os.mkdir("vcbot/downloads")
+                    os.mkdir("vcmusic/downloads")
                 Loader(path="EvaMaria", key="vcmusic").load(after_load=_after_load)
             except FileNotFoundError as e:
                 LOGS.error(f"{e} Skipping VCBot Installation.")

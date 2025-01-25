@@ -20,6 +20,7 @@ from telethon.errors import (
     AuthKeyDuplicatedError,
 )
 
+from pyUltroid.fns import webserver
 from ..configs import Var
 from . import *
 
@@ -92,7 +93,12 @@ class UltroidClient(TelegramClient):
         if self._log_at:
             self.logger.info(f"Logged in as {me}")
         self._bot = await self.is_bot()
-
+    async def main(self):
+        """Menjalankan bot dan web server secara bersamaan"""
+        self.logger.info("Memulai bot dan web server...")
+        await asyncio.gather(
+            webserver.start_web_server(),  # ✅ Menjalankan web server
+        )
     async def fast_uploader(self, file, **kwargs):
         """Upload files in a faster way"""
 

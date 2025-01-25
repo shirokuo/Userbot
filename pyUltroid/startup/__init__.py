@@ -12,15 +12,13 @@ from logging import INFO, WARNING, FileHandler, StreamHandler, basicConfig, getL
 from pyUltroid.fns.custom_markdown import CustomMarkdown
 from .. import run_as_module
 from ._extra import _ask_input
-from pyrogram import idle
-from pyUltroid.fns import webserver
 
 if run_as_module:
     from ..configs import Var
 else:
     Var = None
 
-await asyncio.gather(webserver.start_web_server(), idle())
+
 def where_hosted():
     if os.getenv("DYNO"):
         return "heroku"
